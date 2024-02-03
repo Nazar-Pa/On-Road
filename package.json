@@ -24,6 +24,8 @@
     "@ngneat/overview": "^5.1.1",
     "firebase": "^10.8.0",
     "moment": "^2.30.1",
+    "ng-otp-input": "^1.9.3",
+    "ngx-mask": "^17.0.4",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.3"
