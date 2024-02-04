@@ -1,0 +1,72 @@
+<main class="main">
+
+    <div class="_ce892">
+        <div class="_20286">
+          <div class="section-two df">
+            <h1>Die Fahrten deiner Wahl für wenig Geld</h1>
+            
+            <div class="form form-main df">
+              <form class="search-form df padding" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+                <div class="fromto df">
+                  <select class="bselect" formControlName="cityFrom" 
+                  [ngClass]="searchForm.controls['cityFrom'].value == 'Haradan?' ? 'selected' : ''">
+                  <option selected class="selected default">{{cityFrom}}</option>
+                    <option *ngFor="let city of cities" class="link">{{city}}</option> 
+                  </select>
+                  <div class="vl"></div>
+                </div>
+                
+                <div class="fromto df">
+                  <select class="bselect" formControlName="cityTo"
+                  [ngClass]="searchForm.controls['cityTo'].value == 'Haraya?' ? 'selected' : ''">
+                    <option selected class="selected default">{{cityTo}}</option>
+                    <option *ngFor="let city of cities" class="link">{{city}}</option> 
+                  </select>
+                  <div class="vl"></div>
+                </div>
+      
+                <div class="date-number df">
+                  <div class="date df">
+                    
+                    <label (click)="showDropCalendar()">{{ selected | date:'d MMMM':"":"az-Latn" }}</label>
+                    <input formControlName="selected" [(ngModel)]="selected" (click)="showDropCalendar()" [attr.disabled]="true">
+                    <div class="vl"></div>
+                    <div *ngIf="isDropDownShowing" id="myDropdown" class="dropdown-content">
+                      <mat-calendar [(selected)]="selected" (selectedChange)="showDropCalendar()"></mat-calendar>
+                    </div>
+    
+                  </div>
+                  <div class="number df">
+                    <mat-icon (click)="handleClick('subtract')">remove_circle_outline</mat-icon>
+                    <input formControlName="numberOfPass" [(ngModel)]="numbOfPassengers">
+                    <mat-icon (click)="handleClick('add')">add_circle_outline</mat-icon>
+                  </div>
+                </div>
+      
+                <div class="submit">
+                  <input type="submit" class="search rdys2" value="Axtar">
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+    </div>
+  
+    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque illum obcaecati et exercitationem, corrupti mollitia repellat dolor. Enim numquam eos facilis dolorum praesentium omnis, totam modi voluptatum quo! Quo, eaque.</div>
+  
+    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque illum obcaecati et exercitationem, corrupti mollitia repellat dolor. Enim numquam eos facilis dolorum praesentium omnis, totam modi voluptatum quo! Quo, eaque.</div>
+  
+    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque illum obcaecati et exercitationem, corrupti mollitia repellat dolor. Enim numquam eos facilis dolorum praesentium omnis, totam modi voluptatum quo! Quo, eaque.</div>
+  
+    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque illum obcaecati et exercitationem, corrupti mollitia repellat dolor. Enim numquam eos facilis dolorum praesentium omnis, totam modi voluptatum quo! Quo, eaque.</div>
+  
+    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque illum obcaecati et exercitationem, corrupti mollitia repellat dolor. Enim numquam eos facilis dolorum praesentium omnis, totam modi voluptatum quo! Quo, eaque.</div>
+  
+    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque illum obcaecati et exercitationem, corrupti mollitia repellat dolor. Enim numquam eos facilis dolorum praesentium omnis, totam modi voluptatum quo! Quo, eaque.</div>
+  
+    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque illum obcaecati et exercitationem, corrupti mollitia repellat dolor. Enim numquam eos facilis dolorum praesentium omnis, totam modi voluptatum quo! Quo, eaque.</div>
+  
+    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque illum obcaecati et exercitationem, corrupti mollitia repellat dolor. Enim numquam eos facilis dolorum praesentium omnis, totam modi voluptatum quo! Quo, eaque.</div>  
+      <h1 *ngIf="user$ | async as user">Welcome to our app, {{user.displayName}}!</h1>
+  </main>

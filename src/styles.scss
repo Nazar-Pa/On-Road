@@ -1,4 +1,327 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+// html,
+// body {
+//   height: 100%;
+// }
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: rgb(246, 246, 250);
+  font-family: Roboto, "Helvetica Neue", sans-serif; 
+  min-height: 100vh;
+  color: black;
+}
+
+// global styling
+
+.top-60 {
+    position: relative;
+    top: 66px;
+}
+
+mat-icon,
+select,
+.user-login-2 .element {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(89, 89, 89);
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+
+  &:hover {
+    color: rgb(247, 129, 118);
+  }
+}
+
+.df {
+  display: flex;
+}
+
+.width100 {
+  width: 100%;
+}
+
+.center,
+.fromto,
+.from,
+.to,
+.date,
+.number,
+.vl,
+.swap-btn,
+.removeWarning {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(109, 113, 131);
+  border-radius: 10px;
+}
+
+.dropdown-content {
+  position: absolute;
+  display: block;
+  background-color: rgb(240, 247, 250);
+  width: 260px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 100000;
+  color: #000000;
+  top: 64px;
+  border-radius: 10px;
+  animation: 0.5s 1 fadeIn;
+
+  mat-calendar {
+    color: rgb(0, 162, 255);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.search {
+  background-color: rgb(38, 148, 238);
+  font-weight: 500;
+  font-size: 18px;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgb(57, 106, 146);
+  }
+}
+
+input {
+  font-size: 16px;
+}
+
+.vl {
+  position: relative;
+  height: 90%;
+  border-left: 1px solid rgb(233, 233, 233);
+  margin: auto 0 auto 14px;
+}
+
+.kirk-item-right div{
+    display: inline;
+    color: #797979;
+}
+
+// app component (navbar)
+
+.nav {
+  position: fixed;
+  height: 66px;
+  background: #ffffff;
+  top: 0;
+  z-index: 200;
+  width: 100%;
+
+  .nav-content {
+    position: relative;
+    max-width: 1030px;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+
+    .logo {
+      position: relative;
+      font-family: "Shantell Sans", cursive;
+      font-size: 34px;
+      height: 100%;
+      cursor: pointer;
+      padding-left: 16px;
+      background: -webkit-linear-gradient(#49ee83, rgb(11, 55, 232));
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .user-login{
+        align-items: center;
+        height: 100%;
+        justify-content: space-around;
+
+        .container{
+            margin-left: 10px;
+            cursor: pointer;
+
+            img{
+                margin: 0 5px;
+            }
+        }
+    }
+
+    .user-login .user-login-2{
+        justify-content: space-between;
+    }
+
+    .search-icon{
+        margin-right: 15px;
+
+        .element{
+            align-items: center;
+            justify-content: space-around;
+        }
+    }
+  }
+}
+
+// home page styling
+
+
+// @media screen and (min-width: 1024px) {
+//     ._20286 {
+//         height: 300px;
+//     }
+// }
+
+._ce892 {
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 0;
+
+  ._20286 {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: rgb(228, 25, 25);
+    width: 100%;
+    background-image: url("./assets/pattern4_1.png");
+    background-blend-mode: multiply;
+    min-height: 250px;
+    height: 300px;
+
+
+    .section-two {
+      position: relative;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin: 0 auto;
+      width: 980px;
+      justify-content: space-around;
+      height: 100%;
+
+      h1 {
+        font-size: 48px;
+        color: #ffffff;
+        font-weight: 500;
+        padding: 0 10px;
+        line-height: normal;
+      }
+    }
+  }
+}
+
+.form {
+  position: relative;
+  width: 100%;
+  border: none;
+  outline: none;
+  height: 60px;
+  padding: 0 20px;
+
+  input,
+  select {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    outline: none;
+  }
+}
+
+.search-form {
+  flex-direction: row;
+  width: 100%;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  border-radius: 12px;
+  outline: none;
+  overflow: hidden;
+  background-color: #ffffff;
+  height: 100%;
+
+  .fromto {
+    flex: 4;
+    position: relative;
+  }
+
+  select {
+    font-size: 18px;
+    height: 100%;
+  }
+
+  .date-number {
+    flex: 6;
+
+    .date {
+      flex: 4;
+
+      label {
+        width: 100%;
+        cursor: pointer;
+      }
+    }
+
+    .number {
+      flex: 2;
+
+      input {
+        margin: 0 5px;
+        text-align: center;
+        padding: 0;
+        width: 30px;
+        font-size: 22px;
+      }
+
+      mat-icon {
+        color: rgb(148, 185, 214);
+
+        &:hover {
+          color: rgb(42, 157, 246);
+        }
+      }
+    }
+  }
+
+  .submit {
+    position: relative;
+    flex: 3;
+
+    input {
+      height: 100%;
+      border: none;
+    }
+  }
+}
+
