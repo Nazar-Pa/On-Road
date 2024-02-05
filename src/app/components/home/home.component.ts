@@ -2,13 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormGroup, UntypedFormBuilder, UntypedFormControl, Validators, FormControl } from '@angular/forms';
 import { Observable, Subject, Subscription } from 'rxjs';
 import { AuthenticationService } from 'src/app/services/authentication.service';
-import { DatePipe } from '@angular/common';
-import * as moment from 'moment';
-
-import { ActivatedRoute, Router } from '@angular/router';
-import Cities from 'src/shared/Cities';
-import { DatabaseService } from 'src/app/services/database.service';
-
+import { Router } from '@angular/router';
+import { Cities } from 'src/shared/interfaces';
 
 @Component({
   selector: 'app-home',
@@ -16,8 +11,6 @@ import { DatabaseService } from 'src/app/services/database.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  title = 'blablacar';
-
   user$ = this.authService.currentUser$;
   selected: Date = new Date();
   cityFrom: string = 'Haradan?';
@@ -55,7 +48,7 @@ export class HomeComponent implements OnInit {
        this.router.navigate(['/search-result'],
        { queryParams: filterField })
   }
-  this.authService.getSearchIcon(false);
+  // this.authService.getSearchIcon(false);
   }
 
   handleClick(sign: string) {

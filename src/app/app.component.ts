@@ -25,8 +25,7 @@ export class AppComponent implements OnInit {
 
   constructor(private formBuilder: UntypedFormBuilder, 
     public authService: AuthenticationService,
-    private router: Router,
-    private route: ActivatedRoute){
+    private router: Router){
     this.searchForm = this.createFormGroupWithBuilder(formBuilder);
   }
 
@@ -36,19 +35,17 @@ export class AppComponent implements OnInit {
       this.showProfileCircle = false;
     }
 
-    // this.router.events.pipe(
-    //   filter((event: NavigationEnd) => event instanceof NavigationEnd)
-          
-    // ).subscribe(event => 
-    //     {
-    //       if(event.url.match(/search/)) {
-    //         this.searchIcon = false;
-    //         console.log(event?.url)
-    //       }
-    //       else this.searchIcon = true;
-           
-    //     }
-    //   );
+    this.router.events.pipe(
+      filter((event: any) => event instanceof NavigationEnd)
+    ).subscribe(event => 
+        {
+          if(event.url.match(/search/)) {
+            this.searchIcon = false;
+            console.log(event?.url)
+          }
+          else this.searchIcon = true;  
+        }
+      );
   }
 
   ngOnDestroy() {
@@ -61,17 +58,9 @@ export class AppComponent implements OnInit {
     });
   }
 
-  onSubmit() {
-    console.log(this.searchForm.value)
-  }
-
   setUrl() {
     // this.authService.getUrl("publish-ride")
     this.authService.currentUrl$ = 'publish-ride'
-  }
-
-  setIconFalse(){
-    this.authService.getSearchIcon(false);
   }
 
   dropDownOpen(){

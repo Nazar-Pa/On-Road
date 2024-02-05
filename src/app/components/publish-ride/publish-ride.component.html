@@ -1,0 +1,107 @@
+    <div class="publish-container">
+      <form [formGroup]="publishRideForm">
+        <div class="row-1">
+          <h2>Haradan haraya gedirsiz?</h2>
+          <div class="route df">
+            <div class="from">
+              <select class="bselect" formControlName="cityFrom" [(ngModel)]="cityFrom">
+                <option selected="selected" class="selected">{{cities[10]}}</option>
+                <option *ngFor="let city of cities" class="link">{{city}}</option> 
+              </select>
+            </div>
+            <mat-icon>arrow_forward</mat-icon>
+            <div class="to">
+              <select class="bselect" formControlName="cityTo" [(ngModel)]="cityTo">
+                <option selected="selected" class="selected">{{cities[44]}}</option>
+                <option *ngFor="let city of cities" class="link">{{city}}</option> 
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="row-1">
+          <div class="number-seats">
+            <h2>Sərnişin sayı</h2>
+            <div class="number-seats-icons df">
+                <mat-icon (click)="handleClick('subtract')">remove_circle_outline</mat-icon>
+                <!-- <img src="assets/minus.png" (click)="handleClick('subtract')"> -->
+                <input class="df" formControlName="numbOfSeat" [(ngModel)]="numbOfSeats" [attr.disabled]="true">
+                <mat-icon (click)="handleClick('add')">add_circle_outline</mat-icon>
+                <!-- <img src="assets/plus.png" (click)="handleClick('add')"> -->
+            </div>           
+          </div>
+        </div>
+
+        <div class="row-1">
+          <div class="col-half">
+            <h2>Tarix</h2>
+            <div class="col-half-date">   
+              <button (click)="showDropCalendar()">{{ selected | date:'d MMMM, EEEE':"":"az-Latn" }}</button>
+              <input formControlName="selected" [(ngModel)]="selected" (click)="showDropCalendar()" [attr.disabled]="true">
+              <div class="vl"></div>
+              <div *ngIf="isDropDownShowing" id="myDropdown" class="col-dropdown-content">
+                <mat-calendar [(selected)]="selected" (selectedChange)="showDropCalendar()"></mat-calendar>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-half">
+            <h2>Texmini saat secin</h2>
+            <div class="col-half-time">
+              <select class="bselect" formControlName="time" [(ngModel)]="time">
+                <option selected="selected" class="selected">{{timeSlots[3]}}</option>
+                <option *ngFor="let time of timeSlots" class="link">{{time}}</option> 
+              </select>
+            </div>
+          </div>  
+        </div>
+
+        <div class="row-1">
+          <div class="col-half">
+              <h2>Gediş haqqı (AZN ile)</h2>
+              <div class="col-half-time">
+                  <select class="bselect" formControlName="price">
+                      <option selected="selected" class="selected">{{prices[4]}}</option>
+                      <option *ngFor="let price of prices" class="link">{{price}}</option> 
+                    </select>
+              </div>
+            
+          </div>
+
+          <div class="col-half">
+            <div class="col-half-car">
+              <h2>
+                  Avtomobilin marka ve modeli
+              </h2>
+              <input type="text" formControlName="car" placeholder="məsələn: Mercedes C-class 2008">                
+            </div>
+          </div>
+        </div>
+
+        <div class="row-1">
+          <mat-accordion class="mat-accordion">
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                                 (closed)="panelOpenState = false"
+                                 class="accordion">
+              <mat-expansion-panel-header>
+                <h3>
+                  Elave melumat qeyd edin
+                </h3>
+              </mat-expansion-panel-header>
+              <textarea [(ngModel)]="charCount" formControlName="note" rows="5" maxlength="230"></textarea>
+              <div id="the-count">
+                <span>{{charCount.trim().length}}</span>
+                <span>/ 230</span>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+
+
+          <div class="center margin-top df">
+            <button type="submit" class="signUpBtn">Dərc et</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+

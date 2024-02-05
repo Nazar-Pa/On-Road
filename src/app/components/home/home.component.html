@@ -8,16 +8,16 @@
             <div class="form form-main df">
               <form class="search-form df padding" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
                 <div class="fromto df">
-                  <select class="bselect" formControlName="cityFrom" 
+                  <select formControlName="cityFrom" 
                   [ngClass]="searchForm.controls['cityFrom'].value == 'Haradan?' ? 'selected' : ''">
-                  <option selected class="selected default">{{cityFrom}}</option>
+                  <option selected class="default">{{cityFrom}}</option>
                     <option *ngFor="let city of cities" class="link">{{city}}</option> 
                   </select>
                   <div class="vl"></div>
                 </div>
                 
                 <div class="fromto df">
-                  <select class="bselect" formControlName="cityTo"
+                  <select formControlName="cityTo"
                   [ngClass]="searchForm.controls['cityTo'].value == 'Haraya?' ? 'selected' : ''">
                     <option selected class="selected default">{{cityTo}}</option>
                     <option *ngFor="let city of cities" class="link">{{city}}</option> 

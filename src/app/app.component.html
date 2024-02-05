@@ -6,26 +6,21 @@
         </div>
         <div class="user-login df">
             <div class="user-login-2 df">
-              <a class="search-icon element df" routerLink="search" *ngIf="searchIcon" (click)="setIconFalse()">
-                  <img src="assets/loupe.png">
-                  <div class="label">Axtar</div> 
-                <!-- <mat-icon>search</mat-icon> -->
-               
+              <a class="search-icon element df" routerLink="search" *ngIf="searchIcon">
+                <mat-icon>search</mat-icon>
+                <div class="label">Axtar</div>                
               </a>
               <a class="publish-ride element df" routerLink="publish-ride" (click)="setUrl()">
-                <!-- <mat-icon>add_box</mat-icon> -->
-                <img src="assets/plus4.png">
+                <mat-icon>add</mat-icon>
                 <div class="label marginL">Publish a ride</div> 
               </a>
             </div>
             <div class="profile-photo">
                 <ng-container *ngIf="authService.currentUser$ | async as user; else loginButton">
                   <div [matMenuTriggerFor]="userMenu" class="container element df">
-                    <img src="assets/user.png">
+                    <mat-icon>person_outline</mat-icon>
                     {{showProfileCircle ? user.displayName : ''}}
-                    <!-- <mat-icon>expand_more</mat-icon> -->
-                    <img src="assets/down-arrow.png">
-                    
+                    <mat-icon>keyboard_arrow_down</mat-icon>
                   </div>
                 </ng-container>
   

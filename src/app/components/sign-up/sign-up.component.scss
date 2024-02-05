@@ -1,0 +1,26 @@
+.signWithEmail, .ignWithNumber{
+    height: 50px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 5px;
+} 
+
+.signWithEmail{
+    margin-bottom: 20px;
+    background-color: rgb(49, 57, 89);
+    color: white;
+    border: none;
+
+    &:hover{
+        background-color: rgb(57, 70, 119);
+    }
+}
+.ignWithNumber{
+    border: 1px solid rgb(49, 57, 89);
+    background-color: white;
+    color: rgb(49, 57, 89);
+
+    &:hover{
+        border: 1px solid rgb(196, 196, 200);
+    }
+}

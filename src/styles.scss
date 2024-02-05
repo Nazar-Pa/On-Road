@@ -5,18 +5,20 @@
 //   height: 100%;
 // }
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&family=Shantell+Sans:wght@800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
 }
 
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: rgb(246, 246, 250);
-  font-family: Roboto, "Helvetica Neue", sans-serif; 
+  font-family: Roboto, "Helvetica Neue", sans-serif;
   min-height: 100vh;
   color: black;
 }
@@ -24,8 +26,8 @@ body {
 // global styling
 
 .top-60 {
-    position: relative;
-    top: 66px;
+  position: relative;
+  top: 66px;
 }
 
 mat-icon,
@@ -39,6 +41,8 @@ a {
   color: rgb(89, 89, 89);
   font-weight: 500;
   font-family: "Roboto", sans-serif;
+  align-items: center;
+  color: #132968;
 
   &:hover {
     color: rgb(247, 129, 118);
@@ -130,9 +134,59 @@ input {
   margin: auto 0 auto 14px;
 }
 
-.kirk-item-right div{
-    display: inline;
-    color: #797979;
+.kirk-item-right div {
+  display: inline;
+  color: #797979;
+}
+
+.date-input input,
+.date input {
+  display: none;
+}
+
+label {
+  font-size: 20px;
+}
+
+.form-container {
+  display: flex;
+  position: relative;
+  max-width: 440px;
+  margin: auto;
+  background: #ffffff;
+  padding: 18px;
+  border-radius: 6px;
+  flex-direction: column;
+  margin-top: 10px;
+
+  mat-form-field {
+    width: 100%;
+  }
+
+  .center {
+    text-align: center;
+    margin-top: 16px;
+  }
+
+  .sign-up-link{
+    font-size: 1.2rem;
+    margin-left: 8px;
+  }
+}
+
+.signUpBtn{
+  border: none;
+  color: white;
+  background-color: #fa6b6b;
+  font-size: 14px;
+  padding: 12px 30px;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover{
+    background-color: rgb(57, 70, 119);
+  }
 }
 
 // app component (navbar)
@@ -160,43 +214,45 @@ input {
       height: 100%;
       cursor: pointer;
       padding-left: 16px;
-      background: -webkit-linear-gradient(#49ee83, rgb(11, 55, 232));
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: #132968;
+      // background: -webkit-linear-gradient(#49ee83, rgb(11, 55, 232));
+      // background-clip: text;
+      // -webkit-text-fill-color: transparent;
+      align-items: center;
+      font-weight: 800;
     }
 
-    .user-login{
+    .user-login {
+      align-items: center;
+      height: 100%;
+      justify-content: space-around;
+
+      .container {
+        margin-left: 10px;
+        cursor: pointer;
+
+        img {
+          margin: 0 5px;
+        }
+      }
+    }
+
+    .user-login .user-login-2 {
+      justify-content: space-between;
+    }
+
+    .search-icon {
+      margin-right: 15px;
+
+      .element {
         align-items: center;
-        height: 100%;
         justify-content: space-around;
-
-        .container{
-            margin-left: 10px;
-            cursor: pointer;
-
-            img{
-                margin: 0 5px;
-            }
-        }
-    }
-
-    .user-login .user-login-2{
-        justify-content: space-between;
-    }
-
-    .search-icon{
-        margin-right: 15px;
-
-        .element{
-            align-items: center;
-            justify-content: space-around;
-        }
+      }
     }
   }
 }
 
 // home page styling
-
 
 // @media screen and (min-width: 1024px) {
 //     ._20286 {
@@ -220,7 +276,6 @@ input {
     background-blend-mode: multiply;
     min-height: 250px;
     height: 300px;
-
 
     .section-two {
       position: relative;
@@ -274,6 +329,14 @@ input {
   .fromto {
     flex: 4;
     position: relative;
+
+    option {
+      color: #000000;
+    }
+
+    .selected {
+      color: gray;
+    }
   }
 
   select {
@@ -325,3 +388,8 @@ input {
   }
 }
 
+@media screen and (max-width: 768px) {
+  .label {
+    display: none;
+  }
+}

@@ -31,11 +31,19 @@ import {MatExpansionModule} from '@angular/material/expansion'
 
 import { NgOtpInputModule } from 'ng-otp-input';
 import { NgxMaskModule, IConfig  } from 'ngx-mask';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { LoginComponent } from './components/login/login.component';
+import { EmailAuthComponent } from './components/email-auth/email-auth.component';
+import { PublishRideComponent } from './components/publish-ride/publish-ride.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    SignUpComponent,
+    LoginComponent,
+    EmailAuthComponent,
+    PublishRideComponent
   ],
   imports: [
     BrowserModule,
