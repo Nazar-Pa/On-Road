@@ -1,5 +1,5 @@
     <div class="publish-container">
-      <form [formGroup]="publishRideForm">
+      <form [formGroup]="publishRideForm" (ngSubmit)="onSubmit()">
         <div class="row-1">
           <h2>Haradan haraya gedirsiz?</h2>
           <div class="route df">
@@ -35,12 +35,13 @@
         <div class="row-1">
           <div class="col-half">
             <h2>Tarix</h2>
-            <div class="col-half-date">   
-              <button (click)="showDropCalendar()">{{ selected | date:'d MMMM, EEEE':"":"az-Latn" }}</button>
-              <input formControlName="selected" [(ngModel)]="selected" (click)="showDropCalendar()" [attr.disabled]="true">
+            <div class="col-half-date">
+              <button (click)="showDropCalendar($event)">{{ selected | date:'d MMMM, EEEE':"":"az-Latn" }}</button>
+              
+              <input formControlName="selected" [(ngModel)]="selected" [attr.disabled]="true">
               <div class="vl"></div>
               <div *ngIf="isDropDownShowing" id="myDropdown" class="col-dropdown-content">
-                <mat-calendar [(selected)]="selected" (selectedChange)="showDropCalendar()"></mat-calendar>
+                <mat-calendar [(selected)]="selected" (selectedChange)="showDropCalendar($event)"></mat-calendar>
               </div>
             </div>
           </div>

@@ -1,0 +1,12 @@
+// :host ::ng-deep .section-two {
+//     height: 120px;
+// }
+.fromto{
+    color: rgb(76, 163, 240);
+    font-weight: 500;
+}
+
+:host ::ng-deep .section-two {
+    width: auto;
+    max-width: 980px;
+}

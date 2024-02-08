@@ -45,8 +45,6 @@ export class EmailAuthComponent implements OnInit {
     confirmPassword: new UntypedFormControl('', Validators.required)
   }, { validators: passwordMatchValidator() })
 
-  
-
   constructor(private authService: AuthenticationService,
     private databaseService: DatabaseService,
     private router: Router,
@@ -55,8 +53,6 @@ export class EmailAuthComponent implements OnInit {
   ngOnInit(): void {
     this.windowRef = window;
   }
-
-  
 
   submit() {
     if (!this.signUpForm.valid) return;

@@ -1,0 +1,117 @@
+
+<div class="trip-layout" (click)="closeModal($event)" *ngIf="tripDetails">
+
+    
+
+    <div id="myModal" class="modal" *ngIf="modalDisplay">
+  
+        <div class="modal-content">
+          <h1>Rate the driver</h1>
+        </div>
+    </div>
+
+    <div id="myModal" class="modal" *ngIf="showLoginWarning">
+  
+        <div class="modal-content">
+          <h1>You need to log in to rate the driver</h1>
+        </div>
+    </div>
+
+
+
+
+    <div class="trip-main">
+        <h2 *ngIf="authService.newRoute$">Yeni elaniniz derc olundu</h2>
+        <div class="trip-content">
+
+            <h1 class="margin20">{{ tripDetails[0]?.route_date | date:'d MMMM':"":"az-Latn" }}</h1>
+            <div class="trip-route margin20 df">
+                
+                    <ul class="hWztFd">
+                        <li class="fJACZc">
+                            <div>
+                               <div class="departure-time">
+                                <p class="hour">{{tripDetails[0]?.route_date | date:'HH:mm'}}</p>
+                               </div> 
+                               <div class="direction-line">
+                                <div class="sc-irLwvL eoVCJC"></div>
+                                <div class="sc-csKIKE boLthe">
+                                    <div class="cmKBJw" aria-hidden="true"></div>
+                                </div>
+                                <div class="jSFBDi"></div>
+                               </div>
+                               <div class="departure-city">
+                                <p>{{tripDetails[0]?.from_city}}</p>
+                               </div>
+                            </div>
+                        </li>
+                        <li class="fJACZc">
+                            <div>
+                                 
+                                <div class="direction-line bottom">
+                                    <div class="jSFBDi"></div>
+                                      <div class="sc-csKIKE boLthe">
+                                        <div class="cmKBJw" aria-hidden="true"></div>
+                                      </div>
+                                    <div class="sc-irLwvL eoVCJC"></div>
+                                </div>
+                                <div class="departure-city">
+                                  <p>{{tripDetails[0]?.to_city}}</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <span class="kirk-item-right">
+                        <div><strong>{{tripDetails[0]?.numb_of_pass}}</strong></div> 
+                        <img src="assets/car-seat.png">
+                    </span>
+            </div>
+            <div aria-hidden="true" class="kTfzXR kirk-sectionDivider"><hr></div>
+            <div class="price-passengers margin20 df">
+                <div class="passengers">1 nefer ucun qiymet</div>
+                <div class="price">{{tripDetails[0]?.price}} Azn</div>
+            </div>
+            
+            <div aria-hidden="true" class="kTfzXR kirk-sectionDivider"><hr></div>
+            <div class="car margin20 df">
+                <div class="carModel">VOLKSWAGEN GOLF</div>
+            </div>
+            <div aria-hidden="true" class="kTfzXR kirk-sectionDivider"><hr></div>
+            <div class="driver-note">
+                <p>"{{tripDetails[0]?.note}} Lorem ipsum dolor sit amet consectetur adipisicing 
+                    elit. Nulla temporibus excepturi inventore blanditiis labore maxime?"</p>
+            </div>
+            <div aria-hidden="true" class="kTfzXR kirk-sectionDivider"><hr></div>
+            <div class="driver-info df" (click)="openModal()">
+
+                <div class="driver-name">
+                    <p>{{tripDetails[0]?.name}}</p>
+                    <div class="kPNmiv"><span><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" 
+                        width="16" height="16" aria-hidden="true" class="kirk-icon sc-3dofso-0 ilUJhC"><path _ngcontent-agk-c141="" fill-rule="evenodd" clip-rule="evenodd" d="M8.61622 8.08952L2.6818 9.00945C2.02966 9.11055 1.76941 9.9493 2.24025 10.4325L6.52493 14.8294L5.5266 21.0238C5.41689 21.7045 6.09825 22.2229 6.68258 21.9032L12 18.9948L17.3174 21.9032C17.9018 22.2229 18.5831 21.7045 18.4734 21.0238L17.4751 14.8294L21.7597 10.4325C22.2306 9.9493 21.9703 9.11055 21.3182 9.00945L15.3838 8.08952L12.7144 2.46367C12.4211 1.84544 11.5789 1.84544 11.2856 2.46367L8.61622 8.08952Z" fill="#708C91"></path></svg><span _ngcontent-agk-c141="" class="sc-hgzbpb-5 cFpRwB"><span _ngcontent-agk-c141="" class="hwYtkj hNHosP">5,0</span></span></span></div>
+                </div>
+                <div class="df">
+                    <div class="ggbPcE kirk-avatar--image df">
+                        <img src="assets/bmw.jpg">
+                    </div>
+                </div>
+            </div>
+            <div class="driver-contact">
+                <div class="telephone">
+                    <a href="tel:0503650683">
+                        <input class="phone-inpt" 
+                        [ngModel]="tripDetails[0]?.phone"
+                        mask="(000) 000-00-00"
+                        [disabled]="true"
+                    >
+                    </a>
+                </div>
+            </div>
+            <div class="report-trip">
+                <button>Report trip</button>
+            </div>
+            
+        </div>
+    </div>
+
+
+</div>

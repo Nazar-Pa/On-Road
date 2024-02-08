@@ -2,24 +2,24 @@
   <div class="nav">
     <div class="nav-content df">
         <div class="logo df" routerLink="/">
-            BizləYol
+            Bizlə<span [ngStyle]="{'color': 'red'}">Yol</span>
         </div>
         <div class="user-login df">
             <div class="user-login-2 df">
               <a class="search-icon element df" routerLink="search" *ngIf="searchIcon">
-                <mat-icon>search</mat-icon>
-                <div class="label">Axtar</div>                
+                <div class="search-label label">Axtar</div>
+                <img class="nav-icons" src="assets/search.png">                
               </a>
               <a class="publish-ride element df" routerLink="publish-ride" (click)="setUrl()">
-                <mat-icon>add</mat-icon>
-                <div class="label marginL">Publish a ride</div> 
+                <div class="search-label label marginL">Publish a ride</div> 
+                <img class="nav-icons" src="assets/add.png">
               </a>
             </div>
             <div class="profile-photo">
                 <ng-container *ngIf="authService.currentUser$ | async as user; else loginButton">
                   <div [matMenuTriggerFor]="userMenu" class="container element df">
-                    <mat-icon>person_outline</mat-icon>
-                    {{showProfileCircle ? user.displayName : ''}}
+                    <img src="assets/user.png">
+                    <!-- {{showProfileCircle ? user.displayName : ''}} -->
                     <mat-icon>keyboard_arrow_down</mat-icon>
                   </div>
                 </ng-container>

@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit, HostListener } from '@angular/core';
 import { UntypedFormGroup, UntypedFormBuilder, UntypedFormControl } from '@angular/forms';
 import { ActivatedRoute, NavigationEnd, Router, Event } from '@angular/router';
-import { Observable, Subject, Subscription, filter } from 'rxjs';
+import { Observable, Subject, Subscription, filter, takeUntil } from 'rxjs';
 import { AuthenticationService } from './services/authentication.service';
 
 @Component({
@@ -22,6 +22,7 @@ export class AppComponent implements OnInit {
   searchTerm$: any = new Subject();
   searchIcon: boolean = true;
   subscription!: Subscription;
+  unsubscribe$ = new Subject<void>();
 
   constructor(private formBuilder: UntypedFormBuilder, 
     public authService: AuthenticationService,
@@ -30,18 +31,17 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.authService.searchIcon2$ = true
     if(window.innerWidth < 601) {
       this.showProfileCircle = false;
     }
 
     this.router.events.pipe(
-      filter((event: any) => event instanceof NavigationEnd)
+      filter((event: any) => event instanceof NavigationEnd),
+      takeUntil(this.unsubscribe$)
     ).subscribe(event => 
         {
           if(event.url.match(/search/)) {
             this.searchIcon = false;
-            console.log(event?.url)
           }
           else this.searchIcon = true;  
         }
@@ -50,6 +50,8 @@ export class AppComponent implements OnInit {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 
   logout() {

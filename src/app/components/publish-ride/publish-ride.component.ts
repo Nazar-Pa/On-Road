@@ -54,8 +54,7 @@ export class PublishRideComponent implements OnInit {
     }
   }
 
-
-  submit() {
+  onSubmit() {
     const [hours, minutes] = this.time.split(':');
     const [month, day, year] = this.publishRideForm.value.selected.toLocaleDateString().split('/');
 
@@ -71,8 +70,6 @@ export class PublishRideComponent implements OnInit {
       carModel: this.publishRideForm.value.car.toUpperCase(),
       note: this.publishRideForm.value.note
     }
-
-    console.log(newRoute)
     
     this.databaseService.createRoute(newRoute).subscribe((route) => {
       this.router.navigate(['/trip'],
@@ -85,7 +82,7 @@ export class PublishRideComponent implements OnInit {
     this.authService.newRoute$ = false;
 
     // this.publishRideForm.value.numbOfSeat = this.numbOfSeats;
-    if (!this.publishRideForm.valid) return;
+    if (!this.publishRideForm.valid) return
   }
 
   handleClick(sign: string) {
@@ -96,27 +93,8 @@ export class PublishRideComponent implements OnInit {
     }
   }
 
-  showDropCalendar() {
+  showDropCalendar(e: Event) {
     this.isDropDownShowing = !this.isDropDownShowing;
+    e.preventDefault();
   }
-
-  // get cityFrom() {
-  //   return this.publishRideForm.get('cityFrom');
-  // }
-
-  // get cityTo() {
-  //   return this.publishRideForm.get('cityTo');
-  // }
-
-  // get date() {
-  //   return this.publishRideForm.get('date');
-  // }
-
-  // get time() {
-  //   return this.publishRideForm.get('time');
-  // }
-
-  // get car() {
-  //   return this.publishRideForm.get('car');
-  // }
 }

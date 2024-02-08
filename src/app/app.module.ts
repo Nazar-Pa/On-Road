@@ -35,6 +35,13 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { LoginComponent } from './components/login/login.component';
 import { EmailAuthComponent } from './components/email-auth/email-auth.component';
 import { PublishRideComponent } from './components/publish-ride/publish-ride.component';
+import { SearchResultComponent } from './components/search-result/search-result.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
+import { TruncatePipe } from './pipes/truncate.pipe';
+import { SearchComponent } from './components/search/search.component';
+import { MyRidesComponent } from './components/my-rides/my-rides.component';
+import { TripComponent } from './components/trip/trip.component';
+import { TripCardComponent } from './components/trip-card/trip-card.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +50,14 @@ import { PublishRideComponent } from './components/publish-ride/publish-ride.com
     SignUpComponent,
     LoginComponent,
     EmailAuthComponent,
-    PublishRideComponent
+    PublishRideComponent,
+    SearchResultComponent,
+    PaginationComponent,
+    TruncatePipe,
+    SearchComponent,
+    MyRidesComponent,
+    TripComponent,
+    TripCardComponent
   ],
   imports: [
     BrowserModule,

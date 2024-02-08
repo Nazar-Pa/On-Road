@@ -1,0 +1,63 @@
+
+
+  <div class="section-one search-component">
+    <div class="section-two search-component df">
+      <div class="form df">        
+        
+        <form class="search-form df"
+          [formGroup]="searchForm" 
+          (ngSubmit)="onSubmit()"
+          >
+            <div class="fromto df">
+              <select class="bselect" formControlName="cityFrom" 
+              [ngClass]="searchForm.controls['cityFrom'].value == 'Haradan?' ? 'selected' : ''">
+              <option selected class="selected default">{{searchForm.controls['cityFrom'].value}}</option>
+                <option *ngFor="let city of cities" class="link">{{city}}</option> 
+              </select>
+              <div class="vl"></div>
+            </div>
+            
+            <div class="fromto df">
+              <select class="bselect" formControlName="cityTo"
+              [ngClass]="searchForm.controls['cityTo'].value == 'Haraya?' ? 'selected' : ''">
+                <option selected class="selected default">{{searchForm.controls['cityTo'].value}}</option>
+                <option *ngFor="let city of cities" class="link">{{city}}</option> 
+              </select>
+              <div class="vl"></div>
+            </div>
+  
+            <div class="date-number df">
+              <div class="date df">
+                
+                <label (click)="showDropCalendar()">{{ selected | date:'d MMMM':"":"az-Latn" }}</label>
+                <input formControlName="selected" [(ngModel)]="selected" (click)="showDropCalendar()" [attr.disabled]="true">
+                <div class="vl"></div>
+                <div *ngIf="isDropDownShowing" id="myDropdown" class="dropdown-content">
+                  <mat-calendar [(selected)]="selected" (selectedChange)="showDropCalendar()"></mat-calendar>
+                </div>
+  
+              </div>
+              <div class="number df">
+                <mat-icon (click)="handleClick('subtract')">remove_circle_outline</mat-icon>
+                <input formControlName="numberOfPass">
+                <mat-icon (click)="handleClick('add')">add_circle_outline</mat-icon>
+              </div>
+            </div>
+  
+            <div class="submit">
+              <input type="submit" class="search rdys2" value="Axtar">
+            </div>
+          </form>
+      </div>
+      
+    </div>
+    
+
+
+</div>
+
+
+
+
+<!-- routerLink="../trip/{{route.route_id}}" 
+        [queryParams]="{from: filterField}" -->

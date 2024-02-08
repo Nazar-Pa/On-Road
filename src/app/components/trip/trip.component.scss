@@ -1,0 +1,169 @@
+.modal {
+    display: block; 
+    position: absolute;
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%; 
+    padding: auto;
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4);
+  }
+
+  .modal-content{
+    position: sticky;
+    top: 282px;
+    max-width: 650px;
+    height: 75px;
+    margin: auto;
+    background-color: white;
+    transition: 1s ease-in-out;
+}
+
+.modal-content h1{
+    margin: auto;
+}
+
+
+
+.trip-layout{
+    position: relative;
+    height: 100%;
+}
+
+.trip-main{
+    max-width: 650px;
+    margin: auto;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.trip-content{
+    position: relative;
+    padding: 20px 0;
+    background: linear-gradient(to left, #edf3ed, #e5e6f4);
+}
+
+.trip-route{
+    justify-content: space-between;
+}
+
+.price-passengers{
+    margin: 10px 0;
+    justify-content: space-between;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.passengers{
+    color: rgb(130, 130, 130);
+}
+
+.driver-info{
+    justify-content: space-between;
+    margin: 0;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.driver-info:hover{
+    background-color: rgb(231, 239, 254);
+}
+
+
+.car{
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+.carModel{
+    margin-left: 10px;
+    font-weight: 500;
+    font-size: 18px;
+    color: #797979;
+}
+
+.driver-note{
+    padding: 20px;
+}
+
+.driver-note p{
+    font-style: italic;
+    color: #797979;
+    font-weight: 450;
+}
+
+.report-trip{
+    margin: 0 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgb(205, 205, 205);
+    border-top: 1px solid rgb(205, 205, 205);
+}
+
+.report-trip button{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    color: rgb(0, 149, 255);
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.driver-contact{
+    margin: 30px 20px 0 20px;
+}
+
+.telephone{
+    padding: 10px;
+    border-radius: 5px;
+    background-color: rgb(22, 55, 104);
+}
+
+.telephone .phone-inpt{
+    background-color: rgb(22, 55, 104);
+    outline: none;
+    color: rgb(245, 151, 9);
+    border: none;
+}
+
+.telephone a{
+    color: rgb(245, 151, 9);
+}
+
+.margin20{
+    margin: 20px;
+}
+
+h1{
+    color: rgb(22, 55, 104);
+    font-size: 28px;
+    font-weight: 500;
+}
+
+p{
+    font-size: 17px;
+    color: rgb(22, 55, 104);
+    font-weight: 600;
+}
+
+.kTfzXR.kirk-sectionDivider > hr {
+    border-top-width: 0px;
+    height: 8px;
+    background-color: rgb(227, 227, 227);
+}
+
+.kTfzXR > hr {
+    border-right: none;
+    border-bottom: none;
+    border-left: none;
+    border-image: initial;
+    border-top: 1px solid rgb(222, 222, 222);
+    margin: 0px;
+}
+
+
+:host ::ng-deep .direction-line.bottom {
+    margin-left: 52px;
+}

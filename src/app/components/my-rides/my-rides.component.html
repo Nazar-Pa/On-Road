@@ -1,0 +1,164 @@
+<!-- <ng-container *ngFor="let tripsForDates of allTripsOfDriver">
+    <h3>{{tripsForDates?.to_char | date:'d MMMM':"":"az-Latn"}}</h3>
+    <div *ngFor="let data of tripsForDates.data">
+        <div>
+            <h3>{{data.numb_of_pass}}</h3>
+        </div>
+    </div>
+</ng-container> -->
+
+<div class="ywxs5t" *ngIf="allTripsOfDriver?.length != 0">
+    Bütün elanlariniz
+    <img src="assets/right-arrow.png">
+</div>
+
+  <div class="ywxs5t" *ngIf="showNoTrips">
+    Hec bir aktiv elaniniz yoxdu
+  </div>
+
+
+<ul class="rides-search-result"
+    *ngFor="
+                let tripsForDates of allTripsOfDriver
+                  | slice
+                    : (pagination.currentPage - 1) * pagination.pageSize
+                    : pagination.currentPage * pagination.pageSize
+                  "
+    >
+    
+    <div class="search-title df">
+      <div class="search-title-content df">
+        <div class="trip-single-date" *ngIf="tripsForDates?.data?.length > 0">
+          {{tripsForDates?.to_char | date:'d MMMM':"":"az-Latn"}}
+        </div>
+      </div>
+    </div>
+      <div [ngClass]="tripsForDates.data?.length! > 1 ? 'search-result-list' : 'search-result-single'">
+
+          <div class="search-result-card" [ngClass]="clickedIndex === data?.route_id ? 'grayBackground' : ''" 
+          *ngFor="let data of tripsForDates.data">
+
+          <div class="removeDiv" *ngIf="clickedIndex === data?.route_id">
+            <button class="removeBtn" *ngIf="!showWarning" (click)="showWarning = true">Sil</button>
+           
+            <div class="removeWarning" *ngIf="clickedIndex === data?.route_id && showWarning">
+                <span>Silmek istediyinize eminsiz?</span>
+                <div>
+                    <button class="remove" (click)="removeTrip(data?.route_id)">Beli</button>
+                    <button class="cancel" (click)="clickedIndex = clickedIndex == 0 ? data?.routeId : 0">Xeyr</button>
+                </div>
+            </div>
+            
+          </div>
+
+            
+              <div class="clickable-card" (click)="showRemoveBtn(data?.route_id)">
+                  <app-trip-card [trip]="data"></app-trip-card>
+              </div>
+            </div>
+        </div>
+
+  </ul>
+
+  <app-pagination
+                #pagination
+                [collectionSize]="allTripsOfDriver.length"
+                [pageSize]="10"
+                [firstLastButtons]="true"
+                [maxSize]="2"
+    ></app-pagination>
+
+
+
+
+
+<!-- 
+<div class="search-result-list">
+        
+    <mat-card class="search-result-card" 
+    *ngFor="
+                let tripsForDates of allTripsOfDriver
+                  | slice
+                    : (pagination.currentPage - 1) * pagination.pageSize
+                    : pagination.currentPage * pagination.pageSize
+                  "
+    >
+    <h3>{{tripsForDates?.to_char | date:'d MMMM':"":"az-Latn"}}</h3>
+        <div class="clickable-card" *ngFor="let data of tripsForDates.data">
+            <div class="card-content">
+                <div class="card-content-up">
+                    <div class="card-content-upleft">
+                        <ul class="hWztFd">
+                            <li class="fJACZc">
+                                <div>
+                                   <div class="departure-time">
+                                    <p class="hour">{{data.route_date | date:'hh:mm'}}</p>
+                                   </div> 
+                                   <div class="direction-line">
+                                    <div class="eoVCJC"></div>
+                                    <div class="boLthe">
+                                        <div class="cmKBJw" aria-hidden="true"></div>
+                                    </div>
+                                    <div class="jSFBDi"></div>
+                                   </div>
+                                   <div class="departure-city">
+                                    <p>{{data.from_city}}</p>
+                                   </div>
+                                </div>
+                            </li>
+                            <li class="fJACZc">
+                                <div>
+                                     
+                                    <div class="direction-line bottom">
+                                        <div class="jSFBDi"></div>
+                                          <div class="boLthe">
+                                            <div class="cmKBJw" aria-hidden="true"></div>
+                                          </div>
+                                        <div class="eoVCJC"></div>
+                                    </div>
+                                    <div class="departure-city">
+                                      <p>{{data.to_city}}</p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-content-upright">
+                        <p>{{data.price}}</p>
+                    </div>
+                </div>
+                <div class="card-content-down">
+                  <span class="kirk-item-leftWrapper">
+                    <span class="kirk-item-leftAddon">
+                      <div class="ggbPcE kirk-avatar--image">
+                        <img src="assets/bmw.jpg" alt="BlaBlaCar Bus" data-testid="single-logo">
+                      </div>
+                    </span>
+                    <span class="kirk-item-leftText">
+                      <span class="kirk-text kirk-text-title sc-jPQLIr hsgurq">BlaBlaCar Bus</span>
+                      <span class="kirk-text kirk-text-body sc-d9g8h2-0 bjdPAE kirk-item-body">
+                        <div class="sc-hgzbpb-1 kPNmiv"><span class="sc-hgzbpb-2 bcpOAm"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="kirk-icon sc-3dofso-0 ilUJhC" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.61622 8.08952L2.6818 9.00945C2.02966 9.11055 1.76941 9.9493 2.24025 10.4325L6.52493 14.8294L5.5266 21.0238C5.41689 21.7045 6.09825 22.2229 6.68258 21.9032L12 18.9948L17.3174 21.9032C17.9018 22.2229 18.5831 21.7045 18.4734 21.0238L17.4751 14.8294L21.7597 10.4325C22.2306 9.9493 21.9703 9.11055 21.3182 9.00945L15.3838 8.08952L12.7144 2.46367C12.4211 1.84544 11.5789 1.84544 11.2856 2.46367L8.61622 8.08952Z" fill="#708C91"></path></svg>
+                            <span class="sc-hgzbpb-5 cFpRwB">
+                              <span class="sc-19f9nb1-0 sc-1lboabx-0 hwYtkj hNHosP">5,0</span>
+                            </span>
+                          </span>
+                        </div>
+                      </span>
+                    </span>
+                  </span>
+                  <span class="kirk-item-right df">
+                    <div>{{data.numb_of_pass}}</div> <img src="assets/seat.png">
+                  </span>
+                </div>
+            </div>
+        </div>
+    </mat-card>
+  </div>
+
+  <app-pagination
+          #pagination
+          [collectionSize]="allTripsOfDriver.length"
+          [pageSize]="10"
+          [firstLastButtons]="true"
+          [maxSize]="2"
+  ></app-pagination> -->

@@ -5,8 +5,9 @@
           <div class="section-two df">
             <h1>Die Fahrten deiner Wahl für wenig Geld</h1>
             
-            <div class="form form-main df">
-              <form class="search-form df padding" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+            <div class="form df">
+              <form class="search-form df padding" 
+              [formGroup]="searchForm" (ngSubmit)="onSubmit()">
                 <div class="fromto df">
                   <select formControlName="cityFrom" 
                   [ngClass]="searchForm.controls['cityFrom'].value == 'Haradan?' ? 'selected' : ''">
@@ -53,20 +54,58 @@
 
     </div>
   
-    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque illum obcaecati et exercitationem, corrupti mollitia repellat dolor. Enim numquam eos facilis dolorum praesentium omnis, totam modi voluptatum quo! Quo, eaque.</div>
-  
-    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque illum obcaecati et exercitationem, corrupti mollitia repellat dolor. Enim numquam eos facilis dolorum praesentium omnis, totam modi voluptatum quo! Quo, eaque.</div>
-  
-    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque illum obcaecati et exercitationem, corrupti mollitia repellat dolor. Enim numquam eos facilis dolorum praesentium omnis, totam modi voluptatum quo! Quo, eaque.</div>
-  
-    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque illum obcaecati et exercitationem, corrupti mollitia repellat dolor. Enim numquam eos facilis dolorum praesentium omnis, totam modi voluptatum quo! Quo, eaque.</div>
-  
-    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque illum obcaecati et exercitationem, corrupti mollitia repellat dolor. Enim numquam eos facilis dolorum praesentium omnis, totam modi voluptatum quo! Quo, eaque.</div>
-  
-    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque illum obcaecati et exercitationem, corrupti mollitia repellat dolor. Enim numquam eos facilis dolorum praesentium omnis, totam modi voluptatum quo! Quo, eaque.</div>
-  
-    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque illum obcaecati et exercitationem, corrupti mollitia repellat dolor. Enim numquam eos facilis dolorum praesentium omnis, totam modi voluptatum quo! Quo, eaque.</div>
-  
-    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque illum obcaecati et exercitationem, corrupti mollitia repellat dolor. Enim numquam eos facilis dolorum praesentium omnis, totam modi voluptatum quo! Quo, eaque.</div>  
-      <h1 *ngIf="user$ | async as user">Welcome to our app, {{user.displayName}}!</h1>
+    <div class="home-content">
+      <article class="col-1">
+        <div class="col-1-content">
+            <ul class="col1ulist">
+              <li class="col1list">
+                <img src="assets/statistics.png">
+                <p class="bold">
+                    Your pick of rides at low prices
+                </p>
+                <p class="normal">No matter where you’re going, by bus or carpool, find the perfect ride from our wide range of 
+                      destinations and routes at low prices.
+                </p>
+              </li>
+              <li class="col1list">
+                <img src="assets/authentication.png">
+                <p class="bold">Trust who you travel with</p>
+                <p class="normal">We take the time to get to know each of our members and bus partners. We check reviews, profiles and IDs, 
+                    so you know who you’re travelling with and can book your ride at ease on our secure platform.
+                </p>
+              </li>
+              <li class="col1list">
+                <img src="assets/zigzag.png">
+                <p class="bold">Scroll, click, tap and go!</p>
+                <p class="normal">Booking a ride has never been easier! Thanks to our simple app powered by great technology, you can 
+                    book a ride close to you in just minutes.
+                </p>
+              </li>
+            </ul>
+        </div>
+      </article> 
+
+      <div class="jfvRAC">
+        <div class="kyEZOE">
+          <div class="hjUDrU">
+            <div>
+              <img src="assets/reliability.png" alt="" srcset="">
+            </div>
+
+            <div class="sc-f242337d-2 jmwggo">
+              <span>Help us keep you safe from scams</span>
+              <p>At BlaBlaCar, we're working hard to make our platform as secure as it can be. But when scams do happen, 
+                we want you to know exactly how to avoid and report them. Follow our tips to help us keep you safe.
+              </p><div class="sc-f242337d-7 kFcrJu">
+                <a href="/scam">
+              <span>
+                <span class="oi1bgt6">Learn more</span>
+              </span></a></div></div>
+          </div>
+          </div>
+          
+      </div>
+      
+    </div>
+    <h1 *ngIf="user$ | async as user">Welcome to our app, {{user.displayName}}!</h1>
   </main>

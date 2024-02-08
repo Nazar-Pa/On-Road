@@ -1,0 +1,38 @@
+
+
+.section-two.search-component{
+    padding: auto;
+}
+
+:host ::ng-deep .section-two {
+    width: auto;
+    max-width: 980px;
+}
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 800px){
+
+    .form{
+        padding: 0 10px;
+    }
+    .modal{
+        top: 60px;
+    }
+
+    .search-form-short{
+        display: flex;
+    }
+
+    .search-form{
+        box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.62) 0px 2px 16px 0px;
+    }
+
+}

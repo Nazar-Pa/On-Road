@@ -38,3 +38,8 @@ export interface Trip {
     note: string,
     car_model: string
 }
+
+export interface OwnTrip {
+    to_char: string,
+    data: Trip
+}
