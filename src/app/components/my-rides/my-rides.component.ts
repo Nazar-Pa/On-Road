@@ -22,10 +22,10 @@ export class MyRidesComponent implements OnInit, OnDestroy {
     private dataService: DatabaseService) { }
 
   ngOnInit(): void {
-    this.authService.currentUser$.pipe(takeUntil(this.unsubscribe$)).subscribe(async user => {
+    this.authService.currentUser$.pipe(takeUntil(this.unsubscribe$)).subscribe(user => {
       this.dataService.getAllTripsOfDriver(user?.uid).subscribe(trips => {
         this.allTripsOfDriver = trips
-        if(!trips) { this.showNoTrips = true }
+        if(!Object.assign({}, trips).length) { this.showNoTrips = true }
       })
     })
   }

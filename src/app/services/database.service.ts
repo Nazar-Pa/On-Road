@@ -19,7 +19,7 @@ export class DatabaseService {
   private searchParams = new BehaviorSubject('');
   currentSearchParams = this.searchParams.asObservable();
 
-  private apiUrl = 'http://localhost:5000/routes'
+  private apiUrl = 'https://backendbla-bd1898922d5e.herokuapp.com/routes'
 
   constructor(private http: HttpClient) { }
 
@@ -30,7 +30,7 @@ export class DatabaseService {
     // const [month, day, year] = date.split('/');
     // const [hours, minutes] = time.split(':');
     // const timeDetails = { month, day, year, hours, minutes }
-    return this.http.get<any>(`http://localhost:5000/trips/new-trip?route_id=${filterField.routeId}&from=${filterField.from}&to=${filterField.to}&date=${filterField.date}&numbOfPass=${filterField.numbOfPass}`)
+    return this.http.get<any>(`https://backendbla-bd1898922d5e.herokuapp.com/trips/new-trip?route_id=${filterField.routeId}&from=${filterField.from}&to=${filterField.to}&date=${filterField.date}&numbOfPass=${filterField.numbOfPass}`)
   }
 
   deleteTrip(routeId: number): Observable<any> {
@@ -43,7 +43,7 @@ export class DatabaseService {
   }
 
   createUser(user: any): Observable<any> {
-    return this.http.post<any>(`http://localhost:5000/users/user`, user, httpOptions)
+    return this.http.post<any>(`https://backendbla-bd1898922d5e.herokuapp.com/users/user`, user, httpOptions)
   }
 
   getAllRoutes(): Observable<any> {

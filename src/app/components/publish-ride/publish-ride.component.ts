@@ -48,7 +48,9 @@ export class PublishRideComponent implements OnInit {
     this.cities = Cities;
     this.timeSlots = Timeslots;
     this.prices = Prices;
-    this.authService.currentUser$.subscribe(user => this.uid = user?.uid)
+    this.authService.currentUser$.subscribe(user => {
+      this.uid = user?.uid
+      console.log(user?.uid)})
     if(window.innerWidth < 640) {
       this.calendarOpenState = true;
     }
@@ -72,6 +74,7 @@ export class PublishRideComponent implements OnInit {
     }
     
     this.databaseService.createRoute(newRoute).subscribe((route) => {
+      console.log(route)
       this.router.navigate(['/trip'],
        { queryParams: {route_id: route.route_id, from: route.from_city, to: route.to_city, date: route.route_date, numbOfPass: route.numb_of_pass} })
       

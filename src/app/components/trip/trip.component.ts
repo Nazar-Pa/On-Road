@@ -50,6 +50,7 @@ export class TripComponent implements OnInit, OnDestroy {
 
             this.databaseService.getSingleTripOfDriver(this.filterField).subscribe(trip =>
               {
+                console.log(trip)
                 this.tripDetails = trip;
                 this.driverCanRate = user?.uid == trip[0].u_id ? false : true
               }

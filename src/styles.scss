@@ -337,6 +337,14 @@ label {
     padding: 10px;
     border: none;
     outline: none;
+    
+    &:focus {
+      background: #ffffff;
+    }
+
+    &:active {
+      background: #ffffff;
+    }
   }
 }
 
@@ -357,6 +365,7 @@ label {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #ffffff;
 
     option {
       color: #000000;
@@ -364,6 +373,7 @@ label {
 
     .selected {
       color: gray;
+      background-color: #ffffff;
     }
   }
 
