@@ -38,14 +38,14 @@ export class TripComponent implements OnInit, OnDestroy {
         params => {   
           const curdate = new Date(params['date'])     
   
-          if(params) {
+          if(user?.uid && params) {
             this.filterField = {
               from: params['from'],  
               to: params['to'],
-              date: moment(curdate).format('M/D/YYYY, HH:mm'),   
+              date: params['date'],   
               numbOfPass: params['numbOfPass'],
               routeId: params['route_id'],
-              // u_id: user.uid
+              u_id: user?.uid
             }
 
             this.databaseService.getSingleTripOfDriver(this.filterField).subscribe(trip =>
