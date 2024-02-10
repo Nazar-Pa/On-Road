@@ -37,6 +37,8 @@ export class PublishRideComponent implements OnInit {
     numbOfSeat: new UntypedFormControl('', Validators.required),
     price: new FormControl(5, Validators.required),
     car: new UntypedFormControl('', Validators.required),
+    name: new FormControl('', Validators.required),
+    phoneNumber: new FormControl('', Validators.required),
     note: new UntypedFormControl('')
   })
 
@@ -57,26 +59,32 @@ export class PublishRideComponent implements OnInit {
   }
 
   onSubmit() {
+
+    const { cityFrom, cityTo, selected, numbOfSeat, price, car, name, phoneNumber, note } = this.publishRideForm.value;
+
+    console.log(this.publishRideForm.value)
     const [hours, minutes] = this.time.split(':');
-    const [month, day, year] = this.publishRideForm.value.selected.toLocaleDateString().split('/');
+    const [month, day, year] = selected.toLocaleDateString().split('/');
 
     const date = new Date(+year, +month-1, +day, +hours, +minutes, +0);
 
     const newRoute = {
-      from: this.publishRideForm.value.cityFrom,
-      to: this.publishRideForm.value.cityTo,
+      from: cityFrom,
+      to: cityTo,
       date: moment(date).format('YYYY-MM-DD HH:mm'),
-      numbOfPass: this.publishRideForm.value.numbOfSeat,
+      numbOfPass: numbOfSeat,
       u_id: this.uid,
-      price: this.publishRideForm.value.price,
-      carModel: this.publishRideForm.value.car.toUpperCase(),
-      note: this.publishRideForm.value.note
+      price,
+      carModel: car.toUpperCase(),
+      name,
+      phoneNumber,
+      note
     }
     
     this.databaseService.createRoute(newRoute).subscribe((route) => {
-      console.log(route)
+      console.log(newRoute)
       this.router.navigate(['/trip'],
-       { queryParams: {route_id: route.route_id, from: route.from_city, to: route.to_city, date: route.route_date, numbOfPass: route.numb_of_pass} })
+       { queryParams: {route_id: route.route_id} })
       
        this.authService.newRoute$ = true;
     

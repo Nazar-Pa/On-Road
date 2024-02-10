@@ -67,6 +67,28 @@ a {
   align-items: center;
 }
 
+:host ::ng-deep .search-form.ng-untouched {
+  select {
+    &:focus {
+      background: #ffffff;
+    }
+  
+    &:active {
+      background: #ffffff;
+    }
+  }
+}
+
+select {
+  &:focus {
+    background: #ffffff;
+  }
+
+  &:active {
+    background: #ffffff;
+  }
+}
+
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -338,18 +360,6 @@ label {
     border: none;
     outline: none;
   }
-
-  select {
-    
-    &:focus {
-      background: #ffffff;
-    }
-
-    &:active {
-      background: #ffffff;
-    }
-  }
-
 }
 
 .search-form {
@@ -411,6 +421,9 @@ label {
 
       mat-icon {
         color: rgb(148, 185, 214);
+        font-size: 28px;
+        width: 30px;
+        height: 30px;
 
         &:hover {
           color: rgb(42, 157, 246);

@@ -36,9 +36,10 @@
           <div class="col-half">
             <h2>Tarix</h2>
             <div class="col-half-date">
-              <button (click)="showDropCalendar($event)">{{ selected | date:'d MMMM, EEEE':"":"az-Latn" }}</button>
+              <button mat-stroked-button (click)="showDropCalendar($event)">{{ selected | date:'d MMMM, EEEE':"":"az-Latn" }}</button>
+              <!-- <button (click)="showDropCalendar($event)">{{ selected | date:'d MMMM, EEEE':"":"az-Latn" }}</button> -->
               
-              <input formControlName="selected" [(ngModel)]="selected" [attr.disabled]="true">
+              <input formControlName="selected" [(ngModel)]="selected" [readOnly]="true">
               <div class="vl"></div>
               <div *ngIf="isDropDownShowing" id="myDropdown" class="col-dropdown-content">
                 <mat-calendar [(selected)]="selected" (selectedChange)="showDropCalendar($event)"></mat-calendar>
@@ -70,13 +71,56 @@
           </div>
 
           <div class="col-half">
-            <div class="col-half-car">
+            <div class="name-phone">
               <h2>
                   Avtomobilin marka ve modeli
               </h2>
-              <input type="text" formControlName="car" placeholder="məsələn: Mercedes C-class 2008">                
+              <!-- <input type="text" formControlName="car" placeholder="məsələn: Mercedes C-class 2008">     -->
+              <mat-form-field appearance="outline">
+                  
+                <div class="df">
+  
+                <input matInput formControlName="car"
+                placeholder="məsələn: Mercedes C-class 2008">
+                </div>
+                
+            </mat-form-field>            
             </div>
           </div>
+        </div>
+
+        <div class="row-1">
+          <div class="col-half">
+            <div class="name-phone">
+              <h2>Adiniz</h2>           
+              <mat-form-field appearance="outline">
+                  
+                <div class="df">
+  
+                <input matInput formControlName="name">
+                </div>
+                
+            </mat-form-field>
+            </div>
+          </div>
+
+          <div class="col-half">
+            <div class="name-phone">
+              <h2>Elaqe nomresi</h2>
+            
+              <mat-form-field class="col-half-phone" appearance="outline">
+                
+                <div class="df">
+                <span class="defnmb">(0</span>
+                <input class="phoneNmb" matInput formControlName="phoneNumber"
+                mask="00) 000-00-00" 
+                minlength="9" maxlength="13"
+                >
+                </div>
+                
+            </mat-form-field>
+            </div>
+          </div>  
         </div>
 
         <div class="row-1">

@@ -39,7 +39,7 @@
                   </div>
                   <div class="number df">
                     <mat-icon (click)="handleClick('subtract')">remove_circle_outline</mat-icon>
-                    <input formControlName="numberOfPass" [(ngModel)]="numbOfPassengers">
+                    <input formControlName="numberOfPass" [(ngModel)]="numbOfPassengers" [readonly]="true">
                     <mat-icon (click)="handleClick('add')">add_circle_outline</mat-icon>
                   </div>
                 </div>

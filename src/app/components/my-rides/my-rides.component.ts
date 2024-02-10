@@ -25,8 +25,6 @@ export class MyRidesComponent implements OnInit, OnDestroy {
     this.authService.currentUser$.pipe(takeUntil(this.unsubscribe$)).subscribe(user => {
       this.dataService.getAllTripsOfDriver(user?.uid).subscribe(trips => {
         this.allTripsOfDriver = trips
-        console.log(trips)
-        console.log(Object.assign([], trips).length)
         if(Object.assign([], trips).length == 0) { this.showNoTrips = true }
       })
     })

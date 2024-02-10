@@ -36,14 +36,14 @@ export class TripComponent implements OnInit, OnDestroy {
 
       this.activatedRoute.queryParams.subscribe(
         params => {   
-          const curdate = new Date(params['date'])     
+          const curdate = new Date(params['date'])    
   
           if(user?.uid && params) {
             this.filterField = {
-              from: params['from'],  
-              to: params['to'],
-              date: params['date'],   
-              numbOfPass: params['numbOfPass'],
+              // from: params['from'],  
+              // to: params['to'],
+              // date: params['date'],   
+              // numbOfPass: params['numbOfPass'],
               routeId: params['route_id'],
               u_id: user?.uid
             }

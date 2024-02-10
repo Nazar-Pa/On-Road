@@ -10,6 +10,7 @@ import { SearchResultComponent } from './components/search-result/search-result.
 import { SearchComponent } from './components/search/search.component';
 import { MyRidesComponent } from './components/my-rides/my-rides.component';
 import { TripComponent } from './components/trip/trip.component';
+import { PhoneNumberComponent } from './components/phone-number/phone-number.component';
 
 const redirecToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectToHome = () => redirectLoggedInTo(['publish-ride']);
@@ -55,6 +56,10 @@ const routes: Routes = [
   {
     path: 'trip',
     component: TripComponent
+  },
+  {
+    path: 'phone-number',
+    component: PhoneNumberComponent,
   },
 ];
 

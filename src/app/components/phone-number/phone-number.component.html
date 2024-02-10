@@ -1,0 +1,39 @@
+<div class="form-container">
+    <form [formGroup]="signUpFormWithPhone"
+          class="mt-3" 
+          (ngSubmit)="getOTP()">
+          <mat-label>Phone number</mat-label>
+            <mat-form-field  class="w-75" appearance="outline">
+                
+                <div class="df">
+                    <span class="defnmb">(0</span>
+                <input class="phoneNmb" matInput formControlName="phoneNumber"
+                mask="00) 000-00-00" 
+                [(ngModel)]="phoneNmb" minlength="9" maxlength="13"
+                >
+                </div>
+                
+                <mat-error *ngIf="signUpFormWithPhone.get('phoneNumber')?.hasError('minlength')">
+                    Telefon nomresi duzgun deyil
+                </mat-error>
+                
+            </mat-form-field>
+            
+            <div id="recaptcha-container"></div>
+    
+            <div class="center margin-top df">
+                <button
+                class="signUpBtn" 
+                type="submit"
+                >
+                    Send sms code
+                </button>
+                <div id="sign-in-button"></div>
+            </div>
+            
+        </form>
+</div>
+
+
+<!-- mask="00) 000-00-00" 
+                [(ngModel)]="phoneNmb" minlength="9" maxlength="13" -->

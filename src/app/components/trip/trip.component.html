@@ -74,7 +74,7 @@
             
             <div aria-hidden="true" class="kTfzXR kirk-sectionDivider"><hr></div>
             <div class="car margin20 df">
-                <div class="carModel">VOLKSWAGEN GOLF</div>
+                <div class="carModel">{{tripDetails[0]?.car_model}}</div>
             </div>
             <div aria-hidden="true" class="kTfzXR kirk-sectionDivider"><hr></div>
             <div class="driver-note">
@@ -97,9 +97,9 @@
             </div>
             <div class="driver-contact">
                 <div class="telephone">
-                    <a href="tel:0503650683">
+                    <a href={{tripDetails[0]?.phone_number}}>
                         <input class="phone-inpt" 
-                        [ngModel]="tripDetails[0]?.phone"
+                        [ngModel]="tripDetails[0]?.phone_number"
                         mask="(000) 000-00-00"
                         [disabled]="true"
                     >

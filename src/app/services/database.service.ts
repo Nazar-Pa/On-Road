@@ -30,7 +30,7 @@ export class DatabaseService {
     // const [month, day, year] = date.split('/');
     // const [hours, minutes] = time.split(':');
     // const timeDetails = { month, day, year, hours, minutes }
-    return this.http.get<any>(`https://backendbla-bd1898922d5e.herokuapp.com/trips/new-trip?route_id=${filterField.routeId}&from=${filterField.from}&to=${filterField.to}&date=${filterField.date}&numbOfPass=${filterField.numbOfPass}`)
+    return this.http.get<any>(`https://backendbla-bd1898922d5e.herokuapp.com/trips/new-trip?route_id=${filterField.routeId}`)
   }
 
   deleteTrip(routeId: number): Observable<any> {

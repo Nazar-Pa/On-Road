@@ -42,6 +42,7 @@ import { SearchComponent } from './components/search/search.component';
 import { MyRidesComponent } from './components/my-rides/my-rides.component';
 import { TripComponent } from './components/trip/trip.component';
 import { TripCardComponent } from './components/trip-card/trip-card.component';
+import { PhoneNumberComponent } from './components/phone-number/phone-number.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { TripCardComponent } from './components/trip-card/trip-card.component';
     SearchComponent,
     MyRidesComponent,
     TripComponent,
-    TripCardComponent
+    TripCardComponent,
+    PhoneNumberComponent
   ],
   imports: [
     BrowserModule,
