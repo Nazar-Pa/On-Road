@@ -11,23 +11,23 @@
           [formGroup]="searchForm" 
           (ngSubmit)="onSubmit()"
           >
-            <div class="from df">
-              <select class="bselect" formControlName="cityFrom" 
-              [ngClass]="searchForm.controls['cityFrom'].value == 'Haradan?' ? 'selected' : ''">
-              <option selected class="selected default">{{searchForm.controls['cityFrom'].value}}</option>
-                <option *ngFor="let city of cities" class="link">{{city}}</option> 
-              </select>
-              <div class="vl"></div>
-            </div>
-            
-            <div class="to df">
-              <select class="bselect" formControlName="cityTo"
-              [ngClass]="searchForm.controls['cityTo'].value == 'Haraya?' ? 'selected' : ''">
-                <option selected class="selected default">{{searchForm.controls['cityTo'].value}}</option>
-                <option *ngFor="let city of cities" class="link">{{city}}</option> 
-              </select>
-              <div class="vl"></div>
-            </div>
+          <div class="fromto df">
+            <select formControlName="cityFrom" 
+            [ngClass]="searchForm.controls['cityFrom'].value == '' ? 'selected' : ''">
+            <option class="default" label="Haradan?"></option>
+              <option *ngFor="let city of cities" class="link">{{city}}</option> 
+            </select>
+            <div class="vl"></div>
+          </div>
+          
+          <div class="fromto df">
+            <select formControlName="cityTo"
+            [ngClass]="searchForm.controls['cityTo'].value == '' ? 'selected' : ''">
+              <option class="default" label="Haraya?"></option>
+              <option *ngFor="let city of cities" class="link">{{city}}</option> 
+            </select>
+            <div class="vl"></div>
+          </div>
   
             <div class="date-number df">
               <div class="date df">

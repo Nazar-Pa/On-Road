@@ -13,8 +13,6 @@ import { Cities } from 'src/shared/interfaces';
 export class HomeComponent implements OnInit {
   user$ = this.authService.currentUser$;
   selected: Date = new Date();
-  cityFrom: string = 'Haradan?';
-  cityTo: string = 'Haraya?';
   searchForm: UntypedFormGroup;
   cities: string[] = [];
   searchTerm$: any = new Subject();
@@ -35,7 +33,7 @@ export class HomeComponent implements OnInit {
 
   onSubmit() {
     this.searchForm.value.numberOfPass = this.numbOfPassengers;
-    if (this.searchForm.value.cityFrom !== 'Haradan?' && this.searchForm.value.cityTo !== 'Haraya?'){
+    // if (this.searchForm.value.cityFrom !== 'Haradan?' && this.searchForm.value.cityTo !== 'Haraya?'){
     if (!this.searchForm.valid) return;
 
     const filterField = {
@@ -47,7 +45,7 @@ export class HomeComponent implements OnInit {
 
        this.router.navigate(['/search-result'],
        { queryParams: filterField })
-  }
+  // }
   // this.authService.getSearchIcon(false);
   }
 
@@ -65,8 +63,8 @@ export class HomeComponent implements OnInit {
 
   createFormGroupWithBuilder(formBuilder: UntypedFormBuilder) {
     return formBuilder.group({
-      cityFrom: new FormControl('Haradan?', Validators.required),
-      cityTo: new FormControl('Haraya?', Validators.required),
+      cityFrom: new FormControl('', Validators.required),
+      cityTo: new FormControl('', Validators.required),
       selected: new FormControl(new Date(), Validators.required),
       numberOfPass: new FormControl('')
     });

@@ -97,9 +97,9 @@
             </div>
             <div class="driver-contact">
                 <div class="telephone">
-                    <a href={{tripDetails[0]?.phone_number}}>
+                    <a href="'0' + tripDetails[0]?.phone_number">
                         <input class="phone-inpt" 
-                        [ngModel]="tripDetails[0]?.phone_number"
+                        [(ngModel)]="'0' + tripDetails[0].phone_number"
                         mask="(000) 000-00-00"
                         [disabled]="true"
                     >

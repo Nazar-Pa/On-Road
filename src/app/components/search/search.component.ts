@@ -25,8 +25,8 @@ export class SearchComponent implements OnInit {
     private router: Router,
     public authService: AuthenticationService) { 
       this.searchForm = new FormGroup({
-        cityFrom: new FormControl('Haradan?', Validators.required),
-        cityTo: new FormControl('Haraya?', Validators.required),
+        cityFrom: new FormControl('', Validators.required),
+        cityTo: new FormControl('', Validators.required),
         selected: new FormControl(new Date(), Validators.required),
         numberOfPass: new FormControl<number>(1)
       })
@@ -37,7 +37,7 @@ export class SearchComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.searchForm.value.cityFrom !== 'Haradan?' && this.searchForm.value.cityTo !== 'Haraya?'){
+    // if (this.searchForm.value.cityFrom !== 'Haradan?' && this.searchForm.value.cityTo !== 'Haraya?'){
     if (!this.searchForm.valid) return;
 
     this.filterField = {
@@ -55,8 +55,8 @@ export class SearchComponent implements OnInit {
         queryParamsHandling: 'merge'
       }
     )
-  }
-  }
+  // }
+}
 
 
   handleClick(sign: string) {
