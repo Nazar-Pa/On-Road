@@ -1,0 +1,15 @@
+services:
+  yolustu:
+    container_name: yolustucontainer
+    build: .
+    image: yolustu:v1
+    ports:
+      - 80:80
+    expose:
+      - 80
+    networks:
+      - internalnet
+
+networks:
+  internalnet:
+    driver: bridge

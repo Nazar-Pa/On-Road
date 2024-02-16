@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -19,7 +20,7 @@ export class DatabaseService {
   private searchParams = new BehaviorSubject('');
   currentSearchParams = this.searchParams.asObservable();
 
-  private apiUrl = 'https://backendbla-bd1898922d5e.herokuapp.com/routes'
+  private apiUrl = environment.API_BASE_URL
 
   constructor(private http: HttpClient) { }
 
@@ -30,11 +31,11 @@ export class DatabaseService {
     // const [month, day, year] = date.split('/');
     // const [hours, minutes] = time.split(':');
     // const timeDetails = { month, day, year, hours, minutes }
-    return this.http.get<any>(`https://backendbla-bd1898922d5e.herokuapp.com/trips/new-trip?route_id=${filterField.routeId}`)
+    return this.http.get<any>(`${this.apiUrl}/trips/new-trip?route_id=${filterField.routeId}`)
   }
 
   deleteTrip(routeId: number): Observable<any> {
-    const url = `${this.apiUrl}/${routeId}`;
+    const url = `${this.apiUrl}/routes/${routeId}`;
     return this.http.delete<any>(url);
   }
 
@@ -43,7 +44,7 @@ export class DatabaseService {
   }
 
   createUser(user: any): Observable<any> {
-    return this.http.post<any>(`https://backendbla-bd1898922d5e.herokuapp.com/users/user`, user, httpOptions)
+    return this.http.post<any>(`${this.apiUrl}/users/user`, user, httpOptions)
   }
 
   getAllRoutes(): Observable<any> {
