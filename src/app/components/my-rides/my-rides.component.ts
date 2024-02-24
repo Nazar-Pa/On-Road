@@ -23,15 +23,13 @@ export class MyRidesComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.authService.currentUser$.pipe(takeUntil(this.unsubscribe$)).subscribe(user => {
+      console.log(user?.uid)
       this.dataService.getAllTripsOfDriver(user?.uid).subscribe(trips => {
         this.allTripsOfDriver = trips
-        if(Object.assign([], trips).length == 0) { this.showNoTrips = true }
+        this.showNoTrips = !trips
+        // if(Object.assign([], trips).length == 0) { this.showNoTrips = true }
       })
     })
-  }
-
-  ngAfterViewInit() {
-    
   }
 
   showRemoveBtn(routeId: number){

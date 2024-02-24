@@ -57,7 +57,7 @@ export class DatabaseService {
   }
 
   getAllTripsOfDriver(uid: string | undefined): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/${uid}`)
+    return this.http.get<any>(`${this.apiUrl}/routes/${uid}`)
   }
 
   filteredRoutes(routes: any) {
