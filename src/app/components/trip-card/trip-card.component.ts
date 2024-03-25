@@ -7,7 +7,7 @@ import { Trip } from 'src/shared/interfaces';
   styleUrls: ['./trip-card.component.scss']
 })
 export class TripCardComponent implements OnInit {
-    @Input() trip!: Trip;
+  @Input() trip!: Trip;
 
   constructor() { }
 
