@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { DatabaseService } from 'src/app/services/database.service';
+import { AppState } from 'src/app/store/app.state';
 import Cities from 'src/shared/Cities';
 import { Trip } from 'src/shared/Trip';
+import { filterRoutes } from './state/routes.actions';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-search-result',
@@ -55,7 +58,8 @@ export class SearchResultComponent implements OnInit {
   constructor(private databaseService: DatabaseService,
     private route: ActivatedRoute,
     private router: Router,
-    public authService: AuthenticationService) {
+    public authService: AuthenticationService,
+    private store: Store<AppState>) {
       this.searchForm = new FormGroup({
         cityFrom: new FormControl('', Validators.required),
         cityTo: new FormControl('', Validators.required),
@@ -70,15 +74,18 @@ export class SearchResultComponent implements OnInit {
 
     this.route.queryParams.subscribe(
       params => {
-        this.params = params['date'] ? true : false;
-        this.paramsTo = params['to'] ? params['to'] : '';
-        this.paramsFrom = params['from'] ? params['from'] : '';
-        // this.paramsDate = params['date'] ? new Date(params['date']) : new Date('');
+        // this.params = params['date'] ? true : false;
+        this.paramsTo = params['to'] || null;
+        this.paramsFrom = params['from'] || null;
+        this.paramsDate = params['date'] ? new Date(params['date']) : new Date('');
         this.selected = params['date'] ? new Date(params['date']) : new Date();
-        this.searchForm.controls['numberOfPass'].setValue(parseInt(params['numbOfPass']))
-        this.searchForm.controls['cityFrom'].setValue(params['from'])
-        this.searchForm.controls['cityTo'].setValue(params['to'])
-        this.searchForm.controls['selected'].setValue(new Date(params['date']))
+        this.searchForm.patchValue({
+          numberOfPass: parseInt(params['numbOfPass']),
+          cityFrom: params['from'],
+          cityTo: params['to'],
+          selected: new Date(params['date'])
+        })
+        this.store.dispatch(filterRoutes({params}));
         this.databaseService.getFilteredRoutes(params).subscribe(routes => {
           // console.log(routes)
           this.tripsList = routes
@@ -126,7 +133,7 @@ export class SearchResultComponent implements OnInit {
 
   handleClick(sign: string) {
     if(this.searchForm.value.numberOfPass >= 2 && sign == "subtract"){
-      this.searchForm.controls['numberOfPass'].setValue(this.searchForm.value.numberOfPass - 1)
+      this.searchForm.patchValue({numberOfPass: this.searchForm.value.numberOfPass - 1})
     } else if(sign == "add") {
       this.searchForm.controls['numberOfPass'].setValue(this.searchForm.value.numberOfPass + 1)
     }

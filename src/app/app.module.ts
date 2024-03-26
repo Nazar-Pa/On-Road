@@ -12,7 +12,6 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { DatePipe } from '@angular/common';
-import { RouterModule } from '@angular/router';
 import myLocaleAz from '@angular/common/locales/az-Latn'
 
 import {registerLocaleData} from '@angular/common';
@@ -23,7 +22,6 @@ import { MatIconModule } from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
-import { canActivate, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard'
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatCardModule} from '@angular/material/card'
 import { MatNativeDateModule } from '@angular/material/core';
@@ -43,6 +41,12 @@ import { MyRidesComponent } from './components/my-rides/my-rides.component';
 import { TripComponent } from './components/trip/trip.component';
 import { TripCardComponent } from './components/trip-card/trip-card.component';
 import { PhoneNumberComponent } from './components/phone-number/phone-number.component';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import { RouterModule } from '@angular/router';
+import { appReducer } from './store/app.state';
+import { RoutesEffects } from './components/search-result/state/routes.effects';
 
 @NgModule({
   declarations: [
@@ -82,7 +86,10 @@ import { PhoneNumberComponent } from './components/phone-number/phone-number.com
     NgOtpInputModule,
     NgxMaskModule.forRoot(),
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StoreModule.forRoot(appReducer),
+    StoreDevtoolsModule.instrument({maxAge: 25, logOnly: false}),
+    EffectsModule.forRoot([RoutesEffects]),
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
