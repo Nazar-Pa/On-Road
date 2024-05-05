@@ -14,23 +14,18 @@ const httpOptions = {
 })
 export class DatabaseService {
 
-  private routes = new BehaviorSubject('');
-  currentRoutes = this.routes.asObservable();
+  // private routes = new BehaviorSubject('');
+  // currentRoutes = this.routes.asObservable();
 
-  private searchParams = new BehaviorSubject('');
-  currentSearchParams = this.searchParams.asObservable();
+  // private searchParams = new BehaviorSubject('');
+  // currentSearchParams = this.searchParams.asObservable();
 
   private apiUrl = environment.API_BASE_URL
+  // private apiUrl = 'http://localhost:2000'
 
   constructor(private http: HttpClient) { }
 
   getSingleTripOfDriver(filterField: any): Observable<any> {
-     const date = filterField.date
-    // const time = date.toLocaleTimeString();
-    // const [date, time] = filterField.date.split(',');
-    // const [month, day, year] = date.split('/');
-    // const [hours, minutes] = time.split(':');
-    // const timeDetails = { month, day, year, hours, minutes }
     return this.http.get<any>(`${this.apiUrl}/trips/new-trip?route_id=${filterField.routeId}`)
   }
 
@@ -40,7 +35,7 @@ export class DatabaseService {
   }
 
   createRoute(route: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl, route, httpOptions)
+    return this.http.post<any>(`${this.apiUrl}/routes`, route, httpOptions)
   }
 
   createUser(user: any): Observable<any> {
@@ -53,18 +48,18 @@ export class DatabaseService {
 
   getFilteredRoutes(filterField: any): Observable<any> {
     const date = new Date(filterField.date)
-    return this.http.get<any>(`${this.apiUrl}/search?from=${filterField.from}&to=${filterField.to}&date=${date.toLocaleDateString()}&numbOfPass=${filterField.numbOfPass}`, filterField)
+    return this.http.get<any>(`${this.apiUrl}/routes/search?from=${filterField.from}&to=${filterField.to}&date=${date.toLocaleDateString()}&numbOfPass=${filterField.numbOfPass}`, filterField)
   }
 
   getAllTripsOfDriver(uid: string | undefined): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/${uid}`)
+    return this.http.get<any>(`${this.apiUrl}/routes/${uid}`)
   }
 
-  filteredRoutes(routes: any) {
-    this.routes.next(routes);
-  }
+  // filteredRoutes(routes: any) {
+  //   this.routes.next(routes);
+  // }
 
-  getSearchFields(searchParams: any) {
-    this.searchParams.next(searchParams);
-  }
+  // getSearchFields(searchParams: any) {
+  //   this.searchParams.next(searchParams);
+  // }
 }

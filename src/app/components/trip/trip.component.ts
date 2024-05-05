@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { map, Observable, Subject, takeUntil } from 'rxjs';
-import * as moment from 'moment';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { DatabaseService } from 'src/app/services/database.service';
 
@@ -24,31 +23,23 @@ export class TripComponent implements OnInit, OnDestroy {
   constructor(public activatedRoute: ActivatedRoute,
     public authService: AuthenticationService,
     private databaseService: DatabaseService) {
-    // this.state$ = this.activatedRoute.paramMap
-    //   .pipe(map(() => window.history.state))
-
-    //   this.state$.subscribe(res => console.log(res.route))
    }
 
   ngOnInit(): void {
-    this.authService.currentUser$.pipe(takeUntil(this.unsubscribe$)).subscribe(user => {
+    this.authService.currentUser$.pipe(takeUntil(this.unsubscribe$)).subscribe((user: any) => {
       this.userId = user?.uid;
 
       this.activatedRoute.queryParams.subscribe(
-        params => {   
+        (params: any) => {   
           const curdate = new Date(params['date'])    
   
           if(user?.uid && params) {
             this.filterField = {
-              // from: params['from'],  
-              // to: params['to'],
-              // date: params['date'],   
-              // numbOfPass: params['numbOfPass'],
               routeId: params['route_id'],
               u_id: user?.uid
             }
 
-            this.databaseService.getSingleTripOfDriver(this.filterField).subscribe(trip =>
+            this.databaseService.getSingleTripOfDriver(this.filterField).subscribe((trip: any) =>
               {
                 this.tripDetails = trip;
                 this.driverCanRate = user?.uid == trip[0].u_id ? false : true
@@ -81,6 +72,7 @@ export class TripComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
+    this.authService.newRoute$ = false;
   }
 
 }

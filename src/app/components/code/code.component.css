@@ -1,0 +1,15 @@
+.form-container-code {
+    background-color: white;
+    margin: 20px auto;
+    width: 500px;
+    padding: 30px 20px;
+
+    .mb-20 {
+        margin-bottom: 10px;
+    }
+}
+
+.df-c {
+    display: flex;
+    flex-direction: column;
+}
