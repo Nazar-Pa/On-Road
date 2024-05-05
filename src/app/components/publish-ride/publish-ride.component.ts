@@ -7,6 +7,10 @@ import Prices from 'src/shared/Prices';
 import { Router } from '@angular/router';
 import { DatabaseService } from 'src/app/services/database.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { Trip } from 'src/shared/Trip';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/store/app.state';
+import { addRoute } from '../search-result/state/routes.actions';
 
 @Component({
   selector: 'app-publish-ride',
@@ -44,15 +48,16 @@ export class PublishRideComponent implements OnInit {
 
   constructor(private databaseService: DatabaseService,
     private authService: AuthenticationService,
-    private router: Router) { }
+    private router: Router,
+    private store: Store<AppState>) { }
 
   ngOnInit(): void {
     this.cities = Cities;
     this.timeSlots = Timeslots;
     this.prices = Prices;
-    this.authService.currentUser$.subscribe(user => {
+    this.authService.currentUser$.subscribe((user: any) => {
       this.uid = user?.uid
-      console.log(user?.uid)})
+    })
     if(window.innerWidth < 640) {
       this.calendarOpenState = true;
     }
@@ -61,14 +66,12 @@ export class PublishRideComponent implements OnInit {
   onSubmit() {
 
     const { cityFrom, cityTo, selected, numbOfSeat, price, car, name, phoneNumber, note } = this.publishRideForm.value;
-
-    console.log(this.publishRideForm.value)
     const [hours, minutes] = this.time.split(':');
     const [month, day, year] = selected.toLocaleDateString().split('/');
 
     const date = new Date(+year, +month-1, +day, +hours, +minutes, +0);
 
-    const newRoute = {
+    const newRoute: any = {
       from: cityFrom,
       to: cityTo,
       date: moment(date).format('YYYY-MM-DD HH:mm'),
@@ -81,16 +84,14 @@ export class PublishRideComponent implements OnInit {
       note
     }
     
-    this.databaseService.createRoute(newRoute).subscribe((route) => {
-      console.log(newRoute)
-      this.router.navigate(['/trip'],
-       { queryParams: {route_id: route.route_id} })
+    this.store.dispatch(addRoute({route: newRoute}))
+    // this.databaseService.createRoute(newRoute).subscribe((route: any) => {
+    //   this.router.navigate(['/trip'],
+    //    { queryParams: {route_id: route.route_id} })
       
-       this.authService.newRoute$ = true;
+    //    this.authService.newRoute$ = true;
     
-      });
-
-    this.authService.newRoute$ = false;
+    //   });
 
     // this.publishRideForm.value.numbOfSeat = this.numbOfSeats;
     if (!this.publishRideForm.valid) return

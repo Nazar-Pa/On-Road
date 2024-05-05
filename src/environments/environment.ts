@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  API_BASE_URL: 'https://backendbla-bd1898922d5e.herokuapp.com',
+  API_BASE_URL: 'https://fit-step-counter.onrender.com',
   firebase: {
     projectId: 'portfoliopashayev-72411',
     appId: '1:676761319404:web:e6c892e916f2d9cd1e32c9',

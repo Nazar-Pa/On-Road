@@ -8,6 +8,7 @@ import 'firebase/compat/auth';
 import 'firebase/firestore';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { DatabaseService } from 'src/app/services/database.service';
+import { Auth, authState, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendSignInLinkToEmail, sendEmailVerification } from '@angular/fire/auth';
 
 export function passwordMatchValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
@@ -48,6 +49,7 @@ export class EmailAuthComponent implements OnInit {
   constructor(private authService: AuthenticationService,
     private databaseService: DatabaseService,
     private router: Router,
+    private auth: Auth
     ) { }
 
   ngOnInit(): void {
@@ -70,6 +72,35 @@ export class EmailAuthComponent implements OnInit {
         this.authService.currentUrl$ = '';
       } else this.router.navigate([''])
     })
+  }
+
+  submit2() {
+    const { name, email, password } = this.signUpForm.value;
+    var actionCodeSettings = {
+        // URL you want to redirect back to. The domain (www.example.com) for this
+        // URL must be in the authorized domains list in the Firebase Console.
+        url: 'http://localhost:4200/redirect',
+        // This must be true.
+        handleCodeInApp: true,
+        iOS: {
+          bundleId: 'com.example.ios'
+        },
+        android: {
+          packageName: 'com.example.android',
+          installApp: true,
+          minimumVersion: '12'
+        },
+        dynamicLinkDomain: 'example.page.link'
+      };
+
+      firebase.auth().sendSignInLinkToEmail(email, actionCodeSettings)
+    .then(() => {
+      window.localStorage.setItem('emailForSignIn', email);
+    })
+    .catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+    });
   }
 
   get name() {

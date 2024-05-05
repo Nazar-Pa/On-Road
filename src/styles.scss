@@ -5,7 +5,7 @@
 //   height: 100%;
 // }
 
-// @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&family=Shantell+Sans:wght@800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&family=Shantell+Sans:wght@800&display=swap");
 
 * {
   margin: 0;
@@ -167,15 +167,16 @@ label {
 }
 
 .search-label {
-  border: 1px solid #505370;
+  border: 1px solid rgb(38, 148, 238);
   padding: 8px 15px;
   border-radius: 3px;
-  color: #000000;
+  color: rgb(38, 148, 238);
+  font-weight: 500;
 }  
 
 .search-label.marginL {
-  border: 1px solid #505370;
-  background-color: #505370;
+  border: 1px solid rgb(38, 148, 238);
+  background-color: rgb(38, 148, 238);
   color: #ffffff;
 }
 

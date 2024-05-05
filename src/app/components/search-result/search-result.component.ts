@@ -73,7 +73,7 @@ export class SearchResultComponent implements OnInit {
     this.cities = Cities;
 
     this.route.queryParams.subscribe(
-      params => {
+      (params: any) => {
         // this.params = params['date'] ? true : false;
         this.paramsTo = params['to'] || null;
         this.paramsFrom = params['from'] || null;
@@ -86,7 +86,7 @@ export class SearchResultComponent implements OnInit {
           selected: new Date(params['date'])
         })
         this.store.dispatch(filterRoutes({params}));
-        this.databaseService.getFilteredRoutes(params).subscribe(routes => {
+        this.databaseService.getFilteredRoutes(params).subscribe((routes: Trip[]) => {
           // console.log(routes)
           this.tripsList = routes
           this.routeDirection = routes[0]
@@ -116,7 +116,7 @@ export class SearchResultComponent implements OnInit {
       }
     )
 
-    this.databaseService.getFilteredRoutes(this.filterField).subscribe(routes => {
+    this.databaseService.getFilteredRoutes(this.filterField).subscribe((routes: Trip[]) => {
       this.tripsList = routes
       this.routeDirection = routes[0]
     })
@@ -128,7 +128,8 @@ export class SearchResultComponent implements OnInit {
 
   openTrip(route: any) {
     this.router.navigate(['/trip'],
-       { queryParams: {route_id: route.route_id, from: route.from_city, to: route.to_city, date: route.route_date, numbOfPass: route.numb_of_pass} })
+      // { queryParams: {route_id: route.route_id, from: route.from_city, to: route.to_city, date: route.route_date, numbOfPass: route.numb_of_pass} })
+      { queryParams: {route_id: route.route_id} })
   }
 
   handleClick(sign: string) {

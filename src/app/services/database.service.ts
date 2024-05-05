@@ -14,14 +14,14 @@ const httpOptions = {
 })
 export class DatabaseService {
 
-  private routes = new BehaviorSubject('');
-  currentRoutes = this.routes.asObservable();
+  // private routes = new BehaviorSubject('');
+  // currentRoutes = this.routes.asObservable();
 
-  private searchParams = new BehaviorSubject('');
-  currentSearchParams = this.searchParams.asObservable();
+  // private searchParams = new BehaviorSubject('');
+  // currentSearchParams = this.searchParams.asObservable();
 
-  // private apiUrl = environment.API_BASE_URL
-  private apiUrl = 'http://localhost:2000'
+  private apiUrl = environment.API_BASE_URL
+  // private apiUrl = 'http://localhost:2000'
 
   constructor(private http: HttpClient) { }
 
@@ -35,7 +35,7 @@ export class DatabaseService {
   }
 
   createRoute(route: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl, route, httpOptions)
+    return this.http.post<any>(`${this.apiUrl}/routes`, route, httpOptions)
   }
 
   createUser(user: any): Observable<any> {
@@ -55,11 +55,11 @@ export class DatabaseService {
     return this.http.get<any>(`${this.apiUrl}/routes/${uid}`)
   }
 
-  filteredRoutes(routes: any) {
-    this.routes.next(routes);
-  }
+  // filteredRoutes(routes: any) {
+  //   this.routes.next(routes);
+  // }
 
-  getSearchFields(searchParams: any) {
-    this.searchParams.next(searchParams);
-  }
+  // getSearchFields(searchParams: any) {
+  //   this.searchParams.next(searchParams);
+  // }
 }

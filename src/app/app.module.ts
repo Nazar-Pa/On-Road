@@ -47,6 +47,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { RouterModule } from '@angular/router';
 import { appReducer } from './store/app.state';
 import { RoutesEffects } from './components/search-result/state/routes.effects';
+import { CodeComponent } from './components/code/code.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { RoutesEffects } from './components/search-result/state/routes.effects';
     MyRidesComponent,
     TripComponent,
     TripCardComponent,
-    PhoneNumberComponent
+    PhoneNumberComponent,
+    CodeComponent
   ],
   imports: [
     BrowserModule,
