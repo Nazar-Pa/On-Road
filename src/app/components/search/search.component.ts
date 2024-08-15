@@ -37,7 +37,7 @@ export class SearchComponent implements OnInit {
   }
 
   onSubmit() {
-    // if (this.searchForm.value.cityFrom !== 'Haradan?' && this.searchForm.value.cityTo !== 'Haraya?'){
+    // if (this.searchForm.value.cityFrom !== 'From where?' && this.searchForm.value.cityTo !== 'To where?'){
     if (!this.searchForm.valid) return;
 
     this.filterField = {

@@ -1,7 +1,5 @@
 
 <div class="search-main" (click)="closeModal($event)">
-
-
     <div id="myModal" class="modal" *ngIf="modalDisplay">
   
       <div class="section-one search-component modal-content">
@@ -14,7 +12,7 @@
           <div class="fromto df">
             <select formControlName="cityFrom" 
             [ngClass]="searchForm.controls['cityFrom'].value == '' ? 'selected' : ''">
-            <option class="default" label="Haradan?"></option>
+            <option class="default" label="From where?"></option>
               <option *ngFor="let city of cities" class="link">{{city}}</option> 
             </select>
             <div class="vl"></div>
@@ -23,7 +21,7 @@
           <div class="fromto df">
             <select formControlName="cityTo"
             [ngClass]="searchForm.controls['cityTo'].value == '' ? 'selected' : ''">
-              <option class="default" label="Haraya?"></option>
+              <option class="default" label="To where?"></option>
               <option *ngFor="let city of cities" class="link">{{city}}</option> 
             </select>
             <div class="vl"></div>
@@ -84,7 +82,7 @@
             <div class="from df">
               <select class="bselect" 
               formControlName="cityFrom" 
-              [ngClass]="searchForm.controls['cityFrom'].value == 'Haradan?' ? 'selected' : ''">
+              [ngClass]="searchForm.controls['cityFrom'].value == 'From where?' ? 'selected' : ''">
               <option selected class="selected default">{{searchForm.controls['cityFrom'].value}}</option>
                 <option *ngFor="let city of cities" class="link">{{city}}</option> 
               </select>
@@ -93,7 +91,7 @@
             
             <div class="to df">
               <select class="bselect" formControlName="cityTo"
-              [ngClass]="searchForm.controls['cityTo'].value == 'Haraya?' ? 'selected' : ''">
+              [ngClass]="searchForm.controls['cityTo'].value == 'To where?' ? 'selected' : ''">
                 <option selected class="selected default">{{searchForm.controls['cityTo'].value}}</option>
                 <option *ngFor="let city of cities" class="link">{{city}}</option> 
               </select>

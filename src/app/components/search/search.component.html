@@ -1,6 +1,9 @@
 
 
   <div class="section-one search-component">
+
+    <h1>To where getmek isteyirsiz?</h1>
+
     <div class="section-two search-component df">
       <div class="form df">        
         
@@ -12,7 +15,7 @@
             <select formControlName="cityFrom" 
             [ngClass]="searchForm.controls['cityFrom'].value == '' ? 'selected' : ''">
             <!-- <option selected class="default">{{cityFrom}}</option> -->
-            <option class="default" label="Haradan?"></option>
+            <option class="default" label="From where?"></option>
               <option *ngFor="let city of cities" class="link">{{city}}</option> 
             </select>
            
@@ -23,7 +26,7 @@
             <select formControlName="cityTo"
             [ngClass]="searchForm.controls['cityTo'].value == '' ? 'selected' : ''">
               <!-- <option selected class="selected default">{{cityTo}}</option> -->
-              <option class="default" label="Haraya?"></option>
+              <option class="default" label="To where?"></option>
               <option *ngFor="let city of cities" class="link">{{city}}</option> 
             </select>
             <div class="vl"></div>

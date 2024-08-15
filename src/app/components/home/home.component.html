@@ -12,7 +12,7 @@
                   <select formControlName="cityFrom" 
                   [ngClass]="searchForm.controls['cityFrom'].value == '' ? 'selected' : ''">
                   <!-- <option selected class="default">{{cityFrom}}</option> -->
-                  <option class="default" label="Haradan?"></option>
+                  <option class="default" label="From where?"></option>
                     <option *ngFor="let city of cities" class="link">{{city}}</option> 
                   </select>
                  
@@ -23,7 +23,7 @@
                   <select formControlName="cityTo"
                   [ngClass]="searchForm.controls['cityTo'].value == '' ? 'selected' : ''">
                     <!-- <option selected class="selected default">{{cityTo}}</option> -->
-                    <option class="default" label="Haraya?"></option>
+                    <option class="default" label="To where?"></option>
                     <option *ngFor="let city of cities" class="link">{{city}}</option> 
                   </select>
                   <div class="vl"></div>
@@ -64,24 +64,24 @@
               <li class="col1list">
                 <img src="assets/statistics.png">
                 <p class="bold">
-                    Your pick of rides at low prices
+                    Dayanacaqlarda vaxt itirmə
                 </p>
-                <p class="normal">No matter where you’re going, by bus or carpool, find the perfect ride from our wide range of 
-                      destinations and routes at low prices.
+                <p class="normal">Gedəcəyin yerə, tarixə uyğun axtarış et ve çoxlu variantlar arasından sənə ən uyğun olanı seç.
                 </p>
               </li>
               <li class="col1list">
                 <img src="assets/authentication.png">
-                <p class="bold">Trust who you travel with</p>
-                <p class="normal">We take the time to get to know each of our members and bus partners. We check reviews, profiles and IDs, 
-                    so you know who you’re travelling with and can book your ride at ease on our secure platform.
+                <p class="bold">Səyahət edərkən pul qazanmaq olar</p>
+                <p class="normal">
+                    Rayonlar arası taksi xidməti göstərirsən? Müştərini dayanacaqda gözləmək yerinə internetdə onun səni tapmasını
+                     istəyirsən? O zaman gedəcəyin yeri və tarixi qeyd edərək səyahətçinin səni rahatlıqla tapmasına nail ol.
                 </p>
               </li>
               <li class="col1list">
                 <img src="assets/zigzag.png">
-                <p class="bold">Scroll, click, tap and go!</p>
-                <p class="normal">Booking a ride has never been easier! Thanks to our simple app powered by great technology, you can 
-                    book a ride close to you in just minutes.
+                <p class="bold">Səyahət edərkən pul qazanmaq olar</p>
+                <p class="normal">Avtomobilinlə tək yol gedirsən və özünlə yol yoldaşı götürə bilərsən? Və bunu edərkən həm də 
+                    pul qazanmaq istəyirsən? O zaman gedəcəyin yeri və tarixi qeyd edərək sənə uyğun yol yoldaşı tap.
                 </p>
               </li>
             </ul>

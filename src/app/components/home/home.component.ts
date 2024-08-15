@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
 
   onSubmit() {
     this.searchForm.value.numberOfPass = this.numbOfPassengers;
-    // if (this.searchForm.value.cityFrom !== 'Haradan?' && this.searchForm.value.cityTo !== 'Haraya?'){
+    // if (this.searchForm.value.cityFrom !== 'From where?' && this.searchForm.value.cityTo !== 'To where?'){
     if (!this.searchForm.valid) return;
 
     const filterField = {

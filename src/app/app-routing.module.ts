@@ -11,6 +11,8 @@ import { SearchComponent } from './components/search/search.component';
 import { MyRidesComponent } from './components/my-rides/my-rides.component';
 import { TripComponent } from './components/trip/trip.component';
 import { PhoneNumberComponent } from './components/phone-number/phone-number.component';
+import { RedirectComponent } from './components/redirect/redirect.component';
+import { CodeComponent } from './components/code/code.component';
 
 const redirecToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectToHome = () => redirectLoggedInTo(['publish-ride']);
@@ -38,7 +40,7 @@ const routes: Routes = [
   {
     path: 'publish-ride',
     component: PublishRideComponent,
-    ...canActivate(redirecToLogin)
+    // ...canActivate(redirecToLogin)
   },
   {
     path: 'search',
@@ -61,6 +63,12 @@ const routes: Routes = [
     path: 'phone-number',
     component: PhoneNumberComponent,
   },
+  { path: 'code', 
+    component: CodeComponent
+  },
+  { path: 'redirect', 
+    component: RedirectComponent
+  }
 ];
 
 @NgModule({

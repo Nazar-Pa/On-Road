@@ -1,0 +1,62 @@
+<!-- <div class="form-container">
+    <form [formGroup]="verifyOTPform"
+    class="mt-3">
+          
+      <div class="center margin-top">
+        
+        
+        <label>Telefonunuza gelen kodu buraya daxil edin.</label>
+          <ng-otp-input #ngOtpInput (onInputChange)="onOtpChange($event)" 
+          [config]="config"></ng-otp-input>
+          <br>
+          <p>Adiniz?</p>
+
+        <mat-form-field class="w-75" appearance="outline">
+            <input matInput formControlName="name" type="text">
+            <mat-error *ngIf="verifyOTPform.get('name')?.invalid">
+                Adinizi qeyd edin!
+            </mat-error>
+        </mat-form-field>
+
+          <button
+          class="signUpBtn margin-top"
+          type="submit"
+          (click)="verifyOTP()"
+          >
+              Davam et
+          </button>
+          <div id="sign-in-button"></div>
+      </div>
+      
+</form>
+</div> -->
+
+<div class="form-container-code">
+        
+    <div class="center margin-top df-c">
+        <label class="mb-20">Telefonunuza gelen kodu buraya daxil edin.</label>
+        <ng-otp-input #ngOtpInput
+        (onInputChange)="onOtpChange($event)" 
+        [config]="config"></ng-otp-input>
+
+        <br>
+        <p class="mb-20">Adiniz?</p>
+
+        <mat-form-field class="w-75" appearance="outline">
+            <input matInput type="text" [(ngModel)]="name">
+            <mat-error *ngIf="!name">
+                Adinizi qeyd edin!
+            </mat-error>
+        </mat-form-field>
+
+        <button
+        class="signUpBtn margin-top"
+        type="submit"
+        (click)="verifyOTP()"
+        >
+            Kodu tesdiqle
+        </button>
+        <div id="sign-in-button"></div>
+    </div>
+    
+</div>
