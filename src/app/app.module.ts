@@ -48,6 +48,7 @@ import { RouterModule } from '@angular/router';
 import { appReducer } from './store/app.state';
 import { RoutesEffects } from './components/search-result/state/routes.effects';
 import { CodeComponent } from './components/code/code.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { CodeComponent } from './components/code/code.component';
     TripComponent,
     TripCardComponent,
     PhoneNumberComponent,
-    CodeComponent
+    CodeComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

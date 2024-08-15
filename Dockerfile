@@ -1,11 +1,13 @@
-FROM node:18.17-alpine AS build
+FROM node:18-alpine AS build
 WORKDIR /app
 RUN npm cache clean --force
 COPY . .
-RUN npm install
+RUN npm install --force
+Copy . .
 RUN npm run build
 FROM nginx:stable
 ## Copy our default nginx config
+# Copy . .
 COPY default.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /app/dist/yolustu/ /usr/share/nginx/html
 EXPOSE 80
