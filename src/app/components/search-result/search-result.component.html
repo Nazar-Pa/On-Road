@@ -12,7 +12,7 @@
           <div class="fromto df">
             <select formControlName="cityFrom" 
             [ngClass]="searchForm.controls['cityFrom'].value == '' ? 'selected' : ''">
-            <option class="default" label="From where?"></option>
+            <option class="default" [label]="searchForm.controls['cityFrom'].value || 'Haradan?'"></option>
               <option *ngFor="let city of cities" class="link">{{city}}</option> 
             </select>
             <div class="vl"></div>
@@ -21,7 +21,7 @@
           <div class="fromto df">
             <select formControlName="cityTo"
             [ngClass]="searchForm.controls['cityTo'].value == '' ? 'selected' : ''">
-              <option class="default" label="To where?"></option>
+              <option class="default" [label]="searchForm.controls['cityTo'].value || 'Haraya?'"></option>
               <option *ngFor="let city of cities" class="link">{{city}}</option> 
             </select>
             <div class="vl"></div>
