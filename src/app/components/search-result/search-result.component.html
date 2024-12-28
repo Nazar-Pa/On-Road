@@ -10,11 +10,18 @@
           (ngSubmit)="onSubmit()"
           >
           <div class="fromto df">
-            <select formControlName="cityFrom" 
+            <!-- <select formControlName="cityFrom" 
             [ngClass]="searchForm.controls['cityFrom'].value == '' ? 'selected' : ''">
             <option class="default" label="From where?"></option>
               <option *ngFor="let city of cities" class="link">{{city}}</option> 
-            </select>
+            </select> -->
+
+            <mat-form-field>
+                <select matNativeControl required [formControl]="cityFrom">
+                  <option class="default" label="From where?"></option>
+                  <option *ngFor="let city of cities" class="link">{{city}}</option>
+                </select>
+              </mat-form-field>
             <div class="vl"></div>
           </div>
           
@@ -46,13 +53,14 @@
             </div>
   
             <div class="submit">
-              <input type="submit" class="search rdys2" value="Axtar">
+              <input type="submit" class="search rdys2" value="{{searchForm.controls['cityFrom'].value}}">
             </div>
           </form>
       </div>
     </div>
   </div>
-    </div>
+  {{searchForm.controls['cityFrom'].value}}
+</div>
   
   
     <div class="section-one search-component">
@@ -70,7 +78,7 @@
             </span>
             
             </div>
-            <button class="changeFltrBtn" (click)="openModal()">axtarisi <br> deyis</button>
+            <button type="reset" class="changeFltrBtn" (click)="openModal()">axtarisi <br> deyis</button>
           </div>
           
           

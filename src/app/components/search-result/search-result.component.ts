@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, UntypedFormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { DatabaseService } from 'src/app/services/database.service';
@@ -54,37 +54,47 @@ export class SearchResultComponent implements OnInit {
   isDropDownShowing: boolean = false;
   selected: Date = new Date();
   cities: string[] = []; 
+  cityFrom = new FormControl('', Validators.required);
 
   constructor(private databaseService: DatabaseService,
     private route: ActivatedRoute,
     private router: Router,
     public authService: AuthenticationService,
     private store: Store<AppState>) {
-      this.searchForm = new FormGroup({
-        cityFrom: new FormControl('', Validators.required),
-        cityTo: new FormControl('', Validators.required),
-        selected: new FormControl(new Date(), Validators.required),
-        numberOfPass: new FormControl<number>(1)
-      })
-     }
+        this.searchForm = new UntypedFormGroup ({
+            cityFrom: new FormControl('Baku', Validators.required),
+            cityTo: new FormControl('', Validators.required),
+            selected: new FormControl(new Date(), Validators.required),
+            numberOfPass: new FormControl<number>(1)
+          })
+    }
 
   ngOnInit(): void {
 
     this.cities = Cities;
 
+    const bookId = this.route.snapshot;
+
     this.route.queryParams.subscribe(
       (params: any) => {
+        console.log('bookId', params['from'])
         // this.params = params['date'] ? true : false;
         this.paramsTo = params['to'] || null;
         this.paramsFrom = params['from'] || null;
         this.paramsDate = params['date'] ? new Date(params['date']) : new Date('');
         this.selected = params['date'] ? new Date(params['date']) : new Date();
         this.searchForm.patchValue({
-          numberOfPass: parseInt(params['numbOfPass']),
           cityFrom: params['from'],
           cityTo: params['to'],
-          selected: new Date(params['date'])
+          selected: new Date(params['date']),
+          numberOfPass: parseInt(params['numbOfPass'])
         })
+        this.searchForm.setValue({
+            numberOfPass: parseInt(params['numbOfPass']),
+            cityFrom: params['from'],
+            cityTo: params['to'],
+            selected: new Date(params['date'])});
+        this.searchForm.controls['cityFrom'].setValue('Baku');
         this.store.dispatch(filterRoutes({params}));
         this.databaseService.getFilteredRoutes(params).subscribe((routes: Trip[]) => {
           // console.log(routes)
@@ -146,6 +156,7 @@ export class SearchResultComponent implements OnInit {
 
   openModal(){
     this.modalDisplay = true;
+    console.log(this.searchForm.value.cityFrom);
   }
 
   closeModal(event: any){
